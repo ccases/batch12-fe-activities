@@ -1,0 +1,89 @@
+body{
+    font-family: 'Garamond';
+    background-image:
+        linear-gradient(black,black),
+        url(angkas.png);
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-blend-mode:saturation;
+}
+
+h1{
+    font-family:"Trirong", serif;
+    max-width: 514px;
+    text-align:center;
+    margin:auto;
+    color:aliceblue;
+    background: rgba(0, 0, 0, 0.5);
+}
+h1:hover{
+    animation: bg-color-change 3s infinite;
+}
+
+#main{
+    display:flex;
+    flex-direction:column;
+    align-content:center;
+}
+#img-div{
+    display:flex;
+    background: rgba(0, 0, 0, 0.5);
+    align-self: center;
+    flex-direction:column;
+    max-width:514px;
+    padding: 10px;
+    margin:auto;
+}
+
+#img-div:hover{
+    animation: take-flight 900ms infinite;
+}
+
+#img-caption{
+    text-align:center;
+    font-size:30px;
+    color:aliceblue;
+}
+
+a{
+    color:aqua;
+}
+
+.instructions{
+    color:aliceblue;
+    text-align: center;
+}
+
+#tribute-info{
+    max-width:514px;
+    padding:5px;
+    color:aliceblue;
+    font-size:large;
+    margin: auto;
+}
+
+#tribute-info p, h2, h3{
+    background: rgba(0, 0, 0, 0.5);
+}
+
+#image{
+    border-radius: 50%;
+    max-width: 100%;
+    min-width: 30%;
+    margin:auto;
+}
+
+@keyframes bg-color-change{
+    20%{background-color:red;}
+    40%{background-color:yellow;}
+    60%{background-color:green;}
+    80%{background-color:blue;}
+    100%{background-color:violet;}
+}
+
+@keyframes take-flight{
+    66%{transform:translateY(-4%);}
+}
