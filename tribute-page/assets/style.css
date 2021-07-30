@@ -63,8 +63,9 @@ h1, h2, h3, h4, h5, h6{
 }
 #filler1{
   background-image: url("collosal.jpg");
-  padding-top:100px;
+  padding-top:0px;
   margin:0;
+  min-height:500px;
 }
 #filler2{
   background-image: url("attackreiner.jpg");
@@ -233,11 +234,11 @@ a:hover{
 
 .ability-gif-div{
   /* display:block; */
+  position:relative;
 
   display: flex; display:-webkit-flex;
   width:100%;
   max-width:600px;
-  /* min-width:50%; */
   height:auto;
 
   justify-content:center;
@@ -245,18 +246,23 @@ a:hover{
 
 .ability-img{
   width:100%;
-  max-width:39.1vw;
-  /* min-width:50%; */
-  max-height: 22.026vw;
+
+  /* max-width:39.1vw;
+  max-height: 22.026vw; */
+  
+  max-width: 600px;
+  max-height: 338px;
 }
 
 .static-gif{
   position:absolute;
   width:100%;
+/* 
   max-width: 39.1vw;
-  /* min-width:50%; */
-  /* height:auto; */
-  height:auto;
+  height:auto; */
+
+  max-width:600px;
+  max-height:338px;
 }
 .static-gif:hover{
   opacity:0;
