@@ -1,5 +1,5 @@
 body,html{
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
     height:100%;
     background: rgba(0,0,0,1);
 
@@ -9,6 +9,10 @@ body,html{
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
+
+    
+   margin: 0px;
+   padding: 0px;
 }
 
 :root{
@@ -22,14 +26,16 @@ body,html{
   display:flex; display:-webkit-flex;
   flex-direction:column;
   align-content:center;
+  width:100%;
 }
 
 h1, h2, h3, h4, h5, h6{
-    font-family: 'Mukta', sans-serif;
+    font-family: 'Cormorant', serif;
     text-align:center;
     margin:auto;
     color:aliceblue;
 }
+
 #navbar{
     z-index:1;
     background-color:#383734;
@@ -46,14 +52,35 @@ h1, h2, h3, h4, h5, h6{
     scroll-behavior: smooth;
     position: -webkit-sticky;
     position: sticky;
-    top: 8px;
+    top: 0px;
     height: 40px;
-    transition: opacity 0.5s
+    transition: opacity 0.5s; -webkit-transition: opacity 0.5s;
 }
 #navbar:hover{
   /* animation: makeOpaque 0.5s; */
   opacity: 1;
-  transition:opacity .5s;
+  transition:opacity .5s; -webkit-transition: opacity 0.5s;
+}
+#filler1{
+  background-image: url("collosal.jpg");
+  padding-top:100px;
+  margin:0;
+}
+#filler2{
+  background-image: url("attackreiner.jpg");
+}
+.parallax{
+    /* Set a specific height */
+    padding:0;
+    margin:0;
+
+    min-height: 700px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 a{
@@ -72,7 +99,7 @@ a:hover{
   justify-content: center;
 
   background: rgba(0, 0, 0, 1);
-  width:80%;
+  max-width:75%;
   min-width:60%;
   padding: 10px;
   margin:auto;
@@ -87,7 +114,7 @@ a:hover{
 }
 
 #img-caption{
-  text-align:center;
+  text-align:right;
   font-size:20px;
   color:aliceblue;
 }
@@ -104,12 +131,25 @@ a:hover{
   -webkit-animation: fadeInDelayDown 1.5s linear;
 }
 
+#title-line{
+  position:absolute;
+  align-self:center;
+
+  width:400px;
+  height:4px;
+
+  bottom: 157px;
+  animation:fadeInDelayDown 1.5s linear;
+  -webkit-animation: fadeInDelayDown 1.5s linear;
+}
+
+
 .title-desc{
   display:flex; display: -webkit-flex;
   position:absolute;
   align-self:center;
 
-  bottom:144px;
+  bottom:125px;
 
   animation: fadeInDelayUp 1.9s linear;
   -webkit-animation: fadeInDelayUp 1.9s linear;
@@ -142,35 +182,59 @@ a:hover{
 }
 
 #tribute-info{
-    margin: 15px;
-    max-width:80%;
-    padding:5px;
+    margin: 0;
+    max-width:100%;
+    padding:0;
     color:var(--textcolor);
     font-size:large;
     margin: auto;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.65);
+}
+
+#lore-sect{
+  max-width:100%;
 }
 
 .ability-name{
   letter-spacing: 4px;
   text-transform: uppercase;
+  padding: 10px 0 18px 0;
+  font-size: x-large; 
 }
 
 .ability-desc{
   display:flex; display:-webkit-flex;
   flex-direction: row;
   flex-wrap: no-wrap;
+  margin: 0 120px 40px 120px;
+}
+
+.ability-gif-div{
+  display:block;
+  max-width:600px;
+  max-height:338px;
 }
 
 .ability-img{
-  max-width:240px;
-  max-height:320px;
+  /* max-width:100%;
+  max-height:100%; */
+  max-width:720px;
+}
+
+.static-gif{
+  position:absolute;
+  max-width: 720px;
+}
+.static-gif:hover{
+  opacity:0;
 }
 
 .ability-p{
   max-width:70%;
   padding:10px;
+  /* transition: width 1s opacity 1s; -webkit-transition: width 1s opacity 1s; */
 }
+
 
 .spoiler{
   color: var(--textcolor);
@@ -181,6 +245,22 @@ a:hover{
   /* background: rgba(0, 0, 0, 0.5); */
   animation: spoilerUncover 1s linear 0s;
   background:rgba(0,0,0,0);
+}
+
+#footer{
+  display:flex;
+  align-content:center;
+  padding-top:100px;
+  margin-top:20px;
+  bottom:0px;
+  width:100%;
+  background-color: #383734;
+}
+#footer span{
+  color:var(--textcolor);
+  text-align: center;
+  font-size: smaller;
+  margin:auto;
 }
 
 html {
