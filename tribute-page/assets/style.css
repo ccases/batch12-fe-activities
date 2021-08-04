@@ -103,7 +103,7 @@ a:hover{
   flex-direction: column;
   align-self: center;
   justify-content: center;
-
+  
   background: rgba(0, 0, 0, 1);
   padding: 10px;
   
@@ -119,7 +119,7 @@ a:hover{
   height:auto;
   min-width: 60%;
 
-  margin:auto;
+  /* margin:auto; */
   animation: fadeIn 1s linear /*iteration-count direction fill-mode*/;
   -webkit-animation: fadeIn 1s linear;
 }

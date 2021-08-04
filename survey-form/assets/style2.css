@@ -1,0 +1,155 @@
+:root{
+    --color-bg:#121212;
+    --color-primary: #BB86FC;   /* 187, 134, 252*/
+    --color-secondary: #03DAC5; /*3, 218, 197*/
+    --color-error: #CF6679;     /*207, 102, 121*/
+    --color-text-main: #FFFFFF;
+    --color-text-placeholder: #D0CDCD; /*208, 206, 206*/
+    --color-bg-secondary: #242424;
+}
+
+body, html{
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color:var(--color-text-main);
+}
+
+h1,h2{
+    color:var(--color-primary);
+}
+/* DIVS */
+#main-div{
+    padding:0;
+    margin:0;
+    height:100vh;
+}
+#page1-div{
+    display:flex; display:-webkit-flex;
+    flex-flow:column nowrap;
+    width:100%;
+    align-content:center;
+    min-width:700px;
+
+}
+#box-main{
+    display:flex;
+    max-width:1100px;
+    margin:auto;
+    height:100%;
+    background-color: var(--color-bg);
+}
+#title{
+    text-align: right;
+    margin: 100px 0 0;
+}
+#left-bar{
+    position:relative;
+    display:flex; display: -webkit-flex;
+    flex-direction:column;
+    background-color: var(--color-bg-secondary);
+    justify-content: space-between;
+    overflow: hidden;
+    padding:0 50px 0 50px;
+    max-width:260px;
+    max-height:100%;
+    justify-content: flex-start;
+}
+#left-bar-img{
+    rotate:-15deg;
+    position:absolute;
+    right: -40px;
+    bottom:-270px;
+}
+
+#description-div{
+    text-align:right;
+    padding-top:1em;
+}
+.filler-div{
+    height:30%;
+}
+#page1-div{
+    background-image: url("wifi.svg");
+    background-position: 120% 60%;
+    background-size: 30em;
+    background-repeat: no-repeat;
+    /* display:flex; display: -webkit-flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly; */
+    padding:20px;
+}
+#thank-you-header{
+    padding-top:4.25em;
+    padding-left:20px;
+    max-width:80%;
+}
+#thank-you-message{
+    margin:0;
+    padding-left:20px;
+    padding-top: 0.7em;
+    max-width:70%;
+}
+
+#submit-button-div{     /*div containing the button AND bg (parent) */
+    display:flex; display: -webkit-flex;
+    justify-content:center;
+    width:100%;
+    margin:50px 0 30px;
+    /* transition:0.3s; */
+}
+#submit-bg-div{     /*div containing the button */
+    display:flex; display:-webkit-flex;
+    align-items: center;
+    justify-content:center;
+    font-size:1em;
+    text-transform: uppercase;
+    cursor:pointer;
+    color:var(--color-text-main);
+    background:none;
+    position:relative;
+    overflow:hidden;
+    width:18em;
+    height:40px;
+    border:3px solid var(--color-secondary);
+    border-radius: 10px;
+    transition:0.3s;
+}
+#submit{ /*ito yung button mismo*/
+    appearance:none;
+    cursor:pointer;
+    position:absolute;
+    background:var(--color-text-main);
+    background-image: url('back.svg');
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: 2em;
+    font-size:1em;
+    color:var(--color-secondary);
+    border: none;
+    font-weight: 700;
+    border-radius: 5px;
+    width:18em;
+    height:40px;
+    color:var(--color-secondary);
+    text-transform: uppercase;
+    font-weight:700px,bold;
+    overflow:hidden;
+    transition:right 0.3s;
+    right:-19em;
+    padding-left:2em;
+}
+#website-a{
+    color:var(--color-primary);
+    text-decoration: none;
+    transition:0.3s;
+}
+#website-a:hover{
+    color:var(--color-secondary);
+}
+#submit-bg-div:hover{
+    color:rgba(0,0,0,0);
+    border-color: var(--color-text-main);
+}
+#submit-bg-div:hover>#submit{
+    right:0px;
+}
