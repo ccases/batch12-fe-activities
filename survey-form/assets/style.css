@@ -262,6 +262,7 @@ input:focus, textarea:focus, select:focus{
     transition:0.3s;
 }
 #submit{ /*ito yung button mismo*/
+    z-index:1;
     appearance:none;
     cursor:pointer;
     position:absolute;
