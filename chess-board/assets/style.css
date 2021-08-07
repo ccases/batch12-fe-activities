@@ -1,0 +1,122 @@
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-size:6vw;
+}
+
+:root{
+    --black-square:#4b648a;
+    --white-square:#d0dff4;
+}
+#board-div{
+    display: flex; display: -webkit-flex;
+    justify-content:center;
+    margin:20px 0;
+    padding-bottom:100%;
+}
+#board{
+    display:flex; display: -webkit-flex;
+    flex-flow: column-reverse wrap;
+    width:56vw;
+    max-height:56vw;
+}
+
+.square{
+    height:7vw;
+    width:7vw;
+}
+.piece-div{
+    background-position: center;
+    background-repeat:no-repeat;
+    width:100%;
+    /* position:absolute; */
+    background-size: contain;
+    -webkit-user-drag: element;
+    user-select: none;
+    cursor:move; cursor:-moz-grab; cursor:-webkit-grab;
+}
+.black-pawn{
+    background-image: url("blackpawn.svg");
+}
+.black-rook{
+    background-image: url('blackrook.svg');
+}
+.black-knight{
+    background-image: url('blackknight.svg');
+}
+.black-bishop{
+    background-image: url('blackbishop.svg');
+}
+.black-queen{
+    background-image: url('blackqueen.svg');
+}
+.black-king{
+    background-image: url('blackking.svg');
+}
+.white-pawn{
+    background-image: url('whitepawn.svg');
+}
+.white-rook{
+    background-image: url('whiterook.svg');
+}
+.white-knight{
+    background-image: url('whiteknight.svg');
+}
+.white-bishop{
+    background-image: url('whitebishop.svg');
+}
+.white-queen{
+    background-image: url('whitequeen.svg');
+}
+.white-king{
+    background-image: url('whiteking.svg');
+}
+
+
+.white{
+    background-color: var(--white-square);
+}
+.black{
+    background-color: var(--black-square);
+}
+
+@media (orientation: landscape) {
+    * {
+        font-size:8vh;
+    }
+    
+    #board-div{
+        margin:20px 0;
+        /* padding-bottom:100%; */
+    }
+    #board{
+        width:80vh;
+        max-height:80vh;
+    }
+    
+    .square{
+        height:10vh;
+        width:10vh;
+    }
+  }
+  
+  @media (orientation: portrait) {
+    * {
+        font-size:6vw;
+    }
+    
+    #board-div{
+        margin:20px 0;
+        /* padding-bottom:100%; */
+    }
+    #board{
+        width:56vw;
+        max-height:56vw;
+    }
+    
+    .square{
+        height:7vw;
+        width:7vw;
+    }
+  }
