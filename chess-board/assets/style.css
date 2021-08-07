@@ -2,17 +2,52 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-size:6vw;
+    background-color:#363636;
+    font-family: 'Open Sans', sans-serif;
 }
 
 :root{
     --black-square:#4b648a;
     --white-square:#d0dff4;
 }
+#main{
+    display:flex; display:-webkit-flex;
+}
+#time-board-div{
+    position:relative;
+    display:flex; display: -webkit-flex;
+    flex-flow:column;
+    justify-content: center;
+    align-items:center;
+    margin:auto;
+}
+.player-clk-div{
+    display:flex;display:-webkit-flex;
+    flex-flow:row nowrap;
+}
+.player-div{
+    color:white;
+    width:100%;
+    align-content:center;
+    justify-content: center;
+}
+.clk-div{
+    display:flex; display:-webkit-flex;
+    color:aliceblue;
+    /* font-size:1.5em;
+    width:3em; */
+    background-color:#121212;
+    justify-content: center;
+    align-self:flex-end;
+}
+#p1-time, #p2-time{
+    background:none;
+}
 #board-div{
     display: flex; display: -webkit-flex;
     justify-content:center;
-    margin:20px 0;
+    margin:0;
+    position:relative;
     /* padding-bottom:100%; */
 }
 #board{
@@ -29,6 +64,7 @@
 .piece-div{
     background-position: center;
     background-repeat:no-repeat;
+    background-color: rgba(0,0,0,0);
     width:100%;
     /* position:absolute; */
     background-size: contain;
@@ -82,12 +118,22 @@
 }
 
 @media (orientation: landscape) {
-    * {
-        font-size:8vh;
+    #time-board-div{
+        width:80vh;
+    }
+    .player-div{
+        font-size:5vh;
+    }
+    .clk-div{
+        font-size:5vh;
+        width: 12vh;
+    }
+    .piece-div {
+        font-size:7vh;
     }
     
     #board-div{
-        margin:20px 0;
+        /* margin:10vh 0; */
         /* padding-bottom:100%; */
     }
     #board{
@@ -102,12 +148,22 @@
   }
   
   @media (orientation: portrait) {
-    * {
-        font-size:6vw;
+    #time-board-div{
+        width:56vw;
+    }
+    .player-div{
+        font-size:2vw;
+    }
+    .clk-div{
+        font-size:2vw;
+        width: 5vw;
+    }
+    .piece-div{
+        font-size:5vw;
     }
     
     #board-div{
-        margin:20px 0;
+        /* margin:10vh 0; */
         /* padding-bottom:100%; */
     }
     #board{
