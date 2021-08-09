@@ -20,24 +20,7 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         <div id="main">
-            <div class="container" id="themes-div">
-                <!-- <div id="board-theme-div">
-                    <label for="classic-theme" class="board-theme-label">Classic
-                        <input type="radio" id="classic-theme" checked="checked" name="board-theme">
-                    </label>
-                    <label for="wooden-theme"  class="board-theme-label">Wooden
-                        <input type="radio" id="wooden-theme" name="board-theme">
-                    </label>
-                </div>
-                <div id="piece-theme-div">
-                    <label for="style1" class="piece-theme-label">Style1
-                        <input type="radio" id="style1" checked="checked" name="piece-theme">
-                    </label>
-                    <label for="style2" class="piece-theme-label">Style2
-                        <input type="radio" id="style2" name="piece-theme">
-                    </label>
-                </div> -->
-            </div>
+            
             <div class="container">
                 <div id="moves-div">
 
@@ -51,6 +34,7 @@
                     </div>
                 </div>
                 <div id="board-div">
+                    <input type="checkbox" id="flip-checkbox" name="flipper">
                     <div id="board">
                         <div class="square black" id="a1">  <div class="white-rook piece-div"><p>&nbsp</p></div> </div>
                         <div class="square white" id="a2">  <div class="white-pawn piece-div"><p>&nbsp</p></div> </div>
@@ -126,7 +110,31 @@
                         <span id=p1-time>5:00</span>
                     </div>
                 </div>
+                
             </div>
+            <!-- <div class="container" id="themes-div">
+                <div class="radio-div" id="btheme1">
+                    <label for="classic-theme" class="board-theme-label radio-label">
+                        
+                        <input type="radio" id="classic-theme" checked="checked" name="board-theme">
+                    </label>
+                </div>
+                <div class="radio-div"  id="btheme2">
+                    <label for="wooden-theme"  class="board-theme-label radio-label">
+                        <input type="radio" id="wooden-theme" name="board-theme">
+                    </label>
+                </div>
+                <div class="radio-div" id="ptheme1">
+                    <label for="style1" class="piece-theme-label radio-label">
+                        <input type="radio" id="style1" checked="checked" name="piece-theme">
+                    </label>
+                </div>
+                <div class="radio-div" id="ptheme2">
+                    <label for="style2" class="piece-theme-label radio-label">
+                        <input type="radio" id="style2" name="piece-theme">
+                    </label>
+                </div>
+            </div> -->
         </div>
         <script src="" async defer>
             // var items = document.querySelectorAll( '.square' )

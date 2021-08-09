@@ -12,8 +12,55 @@
 }
 #main{
     display:flex;   display:-webkit-flex;
-    flex-flow: row-reverse wrap;
+    flex-flow: row wrap;
+    justify-content:center;
 }
+#themes-div{
+    display:grid;
+    grid-template-areas:
+        "btheme1 btheme2"
+        "ptheme1 ptheme2";
+    font-size:0.5em;
+    /* place-items:center; */
+}
+#classic-theme{
+    grid-area: "btheme1";
+}
+#wooden-theme{
+    grid-area:"btheme2";
+}
+#style1{
+    grid-area:"ptheme1";
+}
+#style2{
+    grid-area:"ptheme2";
+}
+.radio-div{
+    position:relative;
+}
+.radio-label{
+    content: " ";
+    background:none;
+}
+.radio-div:hover{
+    /* background-color: rgba(255,255,255, 1); */
+    color:white;
+}
+input[type="radio"]{
+    visibility:hidden;
+    appearance:none;
+    border-radius:10px;
+    width:100%;
+    height:100%;
+}
+input[type="radio"]:checked{
+    background-color:lightgray;
+    box-shadow: inset 0px 0px 2px 2px rgba(0,0,0,0.5);
+}
+input[type="radio"]:hover{
+    background-color:#707070;
+}
+
 #time-board-div{
     margin:auto;
 }
@@ -42,25 +89,57 @@
     background:none;
 }
 #board-div{
+    /* display:inline-flex; */
     margin:auto;
     position:relative;
+    /* align-content:center; */
 }
 #board{
     margin: 0 auto;
     display:grid;
     grid-template-areas:
-        "black-rook1 black-knight1 black-bishop1 black-queen black-king black-bishop2 black-knight2 black-rook2"
-        "black-pawn black-pawn black-pawn black-pawn black-pawn black-pawn6 black-pawn7 black-pawn8"
-        ". . . . . . . ."
-        ". . . . . . . ."
-        ". . . . . . . ."
-        ". . . . . . . ."
-        "white-pawn1 white-pawn2 white-pawn3 white-pawn4 white-pawn5 white-pawn6 white-pawn7 white-pawn8"
-        "white-rook1 white-knight1 white-bishop1 white-queen white-king white-bishop2 white-knight2 white-rook2";
+        "a1 b1 c1 d1 e1 f1 g1 h1 ."
+        "a2 b2 c2 d2 e2 f2 g2 h2 ."
+        "a3 b3 c3 d3 e3 f3 g3 h3 ."
+        "a4 b4 c4 d4 e4 f4 g4 h4 flip"
+        "a5 b5 c5 d5 e5 f5 g5 h5 ."
+        "a6 b6 c6 d6 e6 f6 g6 h6 ."
+        "a7 b7 c7 d7 e7 f7 g7 h7 ."
+        "a8 b8 c8 d8 e8 f8 g8 h8 .";
     place-items: stretch;
-    grid-auto-flow:column;
     direction:rtl;
-    /* margin:0 100px; */
+}
+#flip-checkbox{
+    position:absolute;
+    appearance:none;
+    background-color:black;
+    background-image: url("flip.svg");
+    border-radius:50%;
+    grid-area: flip;
+    transition: filter 0.3s, transform 0.3s;
+}
+#flip-checkbox:hover{
+    transform: rotate(180deg);
+    filter:invert();
+    box-shadow: 0 0 1px 1px rgba(0,0,0, 1);
+}
+#flip-checkbox:checked{
+    transform: rotate(180deg);
+    filter: invert();
+}
+
+#flip-checkbox:checked ~ #board{
+    grid-template-areas:
+        "a8 b8 c8 d8 e8 f8 g8 h8"
+        "a7 b7 c7 d7 e7 f7 g7 h7"
+        "a6 b6 c6 d6 e6 f6 g6 h6"
+        "a5 b5 c5 d5 e5 f5 g5 h5"
+        "a4 b4 c4 d4 e4 f4 g4 h4"
+        "a3 b3 c3 d3 e3 f3 g3 h3"
+        "a2 b2 c2 d2 e2 f2 g2 h2"
+        "a1 b1 c1 d1 e1 f1 g1 h1";
+    /* grid-auto-flow:row; */
+    direction:ltr;
 }
 #board p{
     background:none;
@@ -128,28 +207,257 @@
 }
 
 
+
+
 @media ( orientation:portrait){
+    #themes-div{
+        grid-template-columns: 25vw 25vw;
+        grid-template-rows: 10vw 10vw;
+    }
+    #flip-checkbox{
+        width:10vw;
+        height:10vw;
+        left:35vw;
+        bottom:-13vw;
+    }
     #time-board-div{
         height:100vw;
         width:80vw;
     }
     #board{
-        grid-template-columns: repeat( 8, 10vw );
+        grid-template-columns: repeat( 9, 10vw );
         grid-template-rows: repeat( 8, 10vw );
         font-size: 7.5vw;
+    }
+    input[type="radio"]{
+        width:20vw;
+        height:10vw;
     }
 }
 
 @media ( orientation:landscape){
-
+    #themes-div{
+        grid-template-columns: 25vh 25vh;
+        grid-template-rows: 10vh 10vh;
+    }
+    #flip-checkbox{
+        width:10vh;
+        height:10vh;
+        top:50%;
+        right:-20%;
+    }
     #time-board-div{
         height:100vh;
         width:80vh;
     }
 
     #board{
-        grid-template-columns: repeat( 8, 10vh );
+        grid-template-columns: repeat( 9, 10vh );
         grid-template-rows: repeat( 8, 10vh );
         font-size: 7.5vh;
     }
+    input[type="radio"]{
+        width:20vh;
+        height:10vh;
+    }
+}
+
+#a1{
+    grid-area:a1;
+}
+#a2{
+    grid-area:a2;
+}
+#a3{
+    grid-area:a3;
+}
+#a4{
+    grid-area:a4;
+}
+#a5{
+    grid-area:a5;
+}
+#a6{
+    grid-area:a6;
+}
+#a7{
+    grid-area:a7;
+}
+#a8{
+    grid-area:a8;
+}
+
+#b1{
+    grid-area:b1;
+}
+#b2{
+    grid-area:b2;
+}
+#b3{
+    grid-area:b3;
+}
+#b4{
+    grid-area:b4;
+}
+#b5{
+    grid-area:b5;
+}
+#b6{
+    grid-area:b6;
+}
+#b7{
+    grid-area:b7;
+}
+#b8{
+    grid-area:b8;
+}
+
+#c1{
+    grid-area:c1;
+}
+#c2{
+    grid-area:c2;
+}
+#c3{
+    grid-area:c3;
+}
+#c4{
+    grid-area:c4;
+}
+#c5{
+    grid-area:c5;
+}
+#c6{
+    grid-area:c6;
+}
+#c7{
+    grid-area:c7;
+}
+#c8{
+    grid-area:c8;
+}
+
+#d1{
+    grid-area:d1;
+}
+#d2{
+    grid-area:d2;
+}
+#d3{
+    grid-area:d3;
+}
+#d4{
+    grid-area:d4;
+}
+#d5{
+    grid-area:d5;
+}
+#d6{
+    grid-area:d6;
+}
+#d7{
+    grid-area:d7;
+}
+#d8{
+    grid-area:d8;
+}
+
+#e1{
+    grid-area:e1;
+}
+#e2{
+    grid-area:e2;
+}
+#e3{
+    grid-area:e3;
+}
+#e4{
+    grid-area:e4;
+}
+#e5{
+    grid-area:e5;
+}
+#e6{
+    grid-area:e6;
+}
+#e7{
+    grid-area:e7;
+}
+#e8{
+    grid-area:e8;
+}
+
+#f1{
+    grid-area:f1;
+}
+#f2{
+    grid-area:f2;
+}
+#f3{
+    grid-area:f3;
+}
+#f4{
+    grid-area:f4;
+}
+#f5{
+    grid-area:f5;
+}
+#f6{
+    grid-area:f6;
+}
+#f7{
+    grid-area:f7;
+}
+#f8{
+    grid-area:f8;
+}
+
+#g1{
+    grid-area:g1;
+}
+#g2{
+    grid-area:g2;
+}
+#g3{
+    grid-area:g3;
+}
+#g4{
+    grid-area:g4;
+}
+#g5{
+    grid-area:g5;
+}
+#g6{
+    grid-area:g6;
+}
+#g7{
+    grid-area:g7;
+}
+#g8{
+    grid-area:g8;
+}
+
+#h1{
+    grid-area:h1;
+}
+#h2{
+    grid-area:h2;
+}
+#h3{
+    grid-area:h3;
+}
+#h4{
+    grid-area:h4;
+}
+#h5{
+    grid-area:h5;
+}
+#h6{
+    grid-area:h6;
+}
+#h7{
+    grid-area:h7;
+}
+#h8{
+    grid-area:h8;
 }
