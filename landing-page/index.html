@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Dyson v11 cordless vacuum cleaner</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet"> 
+        <link rel="stylesheet" href="assets/style.css">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div id="main">
+            <div id="header">
+                <div id="header-cont">
+                    <div id="header-img-container"><img src="assets/Dyson-logo.png" id="header-img" alt="Dyson"></div>
+                    <div id="nav-bar">
+                        <div id="hamburger-div" onclick="menuToggle(this)">
+                            <div class="bar1"></div>
+                            <div class="bar2"></div>
+                            <div class="bar3"></div>
+                        </div>
+                    
+                        <div id="navbar-links-div">
+                            <div class="nav-link-container"><a class="nav-link" href="#home"><span>Home</span></a></div>
+                            <div class="nav-link-container"><a class="nav-link" href="#features"><span>Features</span></a></div>
+                            <div class="nav-link-container"><a class="nav-link" href="#order"><span>Order</span></a></div>
+                            <div class="nav-link-container"><a class="nav-link" href="#contactus"><span>Contact us</span></a></div>
+                        </div>
+                    
+                    </div>
+                </div>
+            </div>
+            <section id="home">
+                <div id="home-desc">
+                    <h1>The Dyson V11™ cordless vacuum.</h1>
+                    <p>For cordless power that lasts.</p>
+                </div>
+            </section>
+            <section id="features" class="margin-navbar">
+                <div id="runtime-div">
+                    <div class="feature-container">
+                        <div id="runtime-desc">
+                            <h1>The right cleaning mode for the right task.</h1>
+                            
+                            <p><br>Three cleaning modes optimized for a variety of tasks. The right balance of 
+                                power and run time, where you need it.</p>
+                        </div>
+                        <div id="mode-radio-div" class="auto-class boost-class eco-class" onclick="changeModeBg(this)">
+                            <input type="radio" id="eco-mode" name="vac-mode" value="eco-mode">
+                            <label id="eco-label" for="eco-mode"> <img class="mode-icon" src="assets/eco.png" style="width:70px"></label>
+                            <input type="radio" id="auto-mode" name="vac-mode" value="auto-mode">
+                            <label id="auto-label" for="auto-mode"> <img class="mode-icon" src="assets/auto.png" style="width:70px"></label>
+                            <input type="radio" id="boost-mode" name="vac-mode" value="boost-mode" checked="checked">
+                            <label id="boost-label" for="boost-mode"> <img class="mode-icon" src="assets/boost.png" style="width:70px"></label>
+                        </div>
+                        
+                    </div>
+                </div>
+                <!-- strong suction -->
+                <div id="suction-div">
+                    <div class="feature-container">
+                        <div id="vacuum-div" class="vacuuming">
+                            <img src="assets/topview-vacuum.png" id="vacuum-img" style="height:150px;">
+                        </div>
+                        <div id="dust-div" class="vacuuming">
+                            <img src="assets/dust.png" id="dust-img" style="height:150px;">
+                        </div>
+                        <div id="suction-desc">
+                            <h1>Deep clean all around.</h1>
+                            <br>
+                            <p>Dyson’s patented cyclones generate 
+                                centrifugal forces up to 79,000g trapping fine dust and dirt 
+                                in the bin, so your vacuum never loses suction.</p>
+                        </div>
+                        <!-- <div id="vacuum-img-container"><img src="assets/topview-vacuum.png" alt="" id="vacuum" style="width:100%"></div> -->
+                    </div>
+                </div>
+                <!-- maintenance alerts -->
+                <div id="maintenance-div">
+                    <div class="feature-container">
+                        <div id="maintenance-desc">
+                            <h1>'Point and shoot' hygienic bin emptying.</h1>
+                            <br>
+                            <p>The 'point and shoot' mechanism hygienically 
+                                ejects dust and debris deep into your bin, in one action – so there's no need to touch the dirt. </p>
+                        </div>
+                        <!-- <img id="bin-bg" data-lazy="assets/dustbin-bg.jpg" class="lazy-loader lazy-init" style="width:1000px;"> -->
+                        <div id = "maintenance-img-div">
+                            
+                            <div class="bin-animate" id="dust-thin-div">
+                                <img id="bin-thin" src="assets/dust-thin.png" style="width:108px;">
+                            </div>
+                            <div class="bin-animate" id="dust-thick-div">
+                                <img id="bin-thicc" src="assets/dust-thicc.png" style="width:108px;">
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div id="video-main-div">
+                    <div id="video-div">
+                        <video width="800px" controls id="video">
+                            <source src="assets/v11-vid.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </section>
+            <section id="order">
+                <!-- put here prices of v11, different styles (maybe 4pcs, adjusting to 2, then 1 column?) -->
+                <h1>Choose your model</h1>
+                <div id="store-items-div">
+                    
+                    <div class="store-item pop-up-item" id="item1" style="--order:0;">
+                        <img class="item-img" src="assets/v11-animal.png" alt="animal">
+                        <h2>Dyson v11 Animal (Purple)</h2>
+                        <p> <br>
+                            Up to 60 minutes of run time* <br>
+                            Powerful cleaning on floors and carpets<br>
+                            LED screen displays cleaning modes and battery life<br><br>
+                        </p>
+                        <span class="price">$599.99</span>
+                        <p class="subtext">As low as $55/month or 0% APR</p>
+                        <a href="#"><div class="link-div out-of-stock"><span>Out of Stock</span></div></a>
+                    </div>
+                    <div class="store-item pop-up-item" id="item2" style="--order:1;">
+                        <img class="item-img" src="assets/v11-blue.png" alt="absolute">
+                        <h2>Dyson v11 Absolute (Blue)</h2>
+                        <p> <br>
+                            Up to 50 minutes of run time* <br>
+                            Powerful cleaning on floors and carpets<br>
+                            LED screen displays cleaning modes and battery life<br><br>
+                        </p>
+                        <span class="price">$1099.99</span>
+                        <p class="subtext">As low as $55/month or 0% APR</p>
+                            <a href="#"><div class="link-div order-now"><span>Order now<br></span></div></a>
+                    </div>
+                    <div class="store-item pop-up-item" id="item3" style="--order:2;">
+                        <img class="item-img" src="assets/v11-fluffy.png" alt="fluffy">
+                        <h2>Dyson v11 Fluffy (Orange)</h2>
+                        <p> <br>
+                            Up to 50 minutes of run time* <br>
+                            Specializes on carpets, includes several tools for cleaning<br>
+                            LED screen displays cleaning modes and battery life<br><br>
+                        </p>
+                        <span class="price">$499.99</span>
+                        <p class="subtext">As low as $55/month or 0% APR</p>
+                        <a href="#"><div class="link-div order-now"><span>Order now</span></div></a>
+                    </div>
+                    <div class="store-item pop-up-item" id="item4" style="--order:3;">
+                        <img class="item-img" src="assets/v11-outsize.png" alt="outsize">
+                        <h2>Dyson v11 Outsize (Orange)</h2>
+                        <p> <br>
+                            Up to 60 minutes of run time* <br>
+                            Large dust bin ensures longer cleaning durations<br>
+                            LED screen displays cleaning modes and battery life<br><br>
+                        </p>
+                        <span class="price">$499.99</span>
+                        <p class="subtext">As low as $55/month or 0% APR</p>
+                        <a href="#"><div class="link-div order-now"><span>Order now</span></div></a>
+                    </div>
+                </div>
+            </section>
+            <section id="contactus">
+                <div class = "feature-container">
+                    To receive special offers and latest news about our products, we'll send them to
+                    <form id="form" action="./submitted.html" method=GET autocomplete="off">
+                        <div id="wrapper">
+                            <input type="text" id="email" name="email" placeholder="Your email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required=""> <!--#6 email validation-->
+                            <label for="email" id="email-label"></label>
+                            <span class="underline"></span>
+                        </div>
+                        <div id="email-invalid">Please enter a valid email address.</div>
+                        <div id="submit-button-div">
+                            
+                            <div id="submit-bg-div"><div id="submit-icon">&nbsp </div>
+                                <input type="submit" name="button" value="Submit" id="submit">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- place forms here -->
+                <!-- and redirect to a static site after -->
+            </section>
+            <div id="footer">
+                <span id="copyright">
+                    Carlos Matthew Cases © 2021
+                </span>
+            </div>
+        </div>
+        <script src="assets/script.js" async defer>
+        </script>
+    </body>
+</html>

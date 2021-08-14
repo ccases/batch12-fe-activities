@@ -116,7 +116,7 @@ input[type="radio"]:hover{
     background-image: url("flip.svg");
     border-radius:50%;
     grid-area: flip;
-    transition: filter 0.3s, transform 0.3s;
+    transition: filter 0.3s, transform 0.3s, background-color 0.3s;
 }
 #flip-checkbox:hover{
     transform: rotate(90deg);
