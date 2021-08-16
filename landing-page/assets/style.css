@@ -483,7 +483,7 @@
     font-size:x-large;
 }
 #contactus{
-    padding:200px 20px 20px;
+    padding:200px 20px 400px;
 
 }
 #contactus input[type="text"]{
@@ -581,7 +581,7 @@
 #footer{
     display:grid;
     place-items: center;
-    height: calc(100vh - 52px - 500px);
+    height: 100px;
     background: rgba(#484848);
     color: #aaaaaa;
 }
@@ -593,18 +593,56 @@
     flex-flow:column;
     justify-content: center;
     align-items: center;
-    background:
-        url("dust.png");
+    /* background:
+        url("dust.png"); */
     height:500px;
     background-repeat:no-repeat;
     background-position: center;
-    
+    position:relative;
+}
+
+#sucker{
+    /* eto yyung div ng img */
+    position:absolute;
+    top:-100px;
+    overflow:hidden;
+    transform:rotate(270deg);
+    animation: vac-move-thankyou 3s 1s forwards;
+    z-index:10;
+}
+#vacsuck{
+/* eto ung image mismo */
+    transform: translateX(300px);
+    bottom:0px;
+}
+@keyframes vac-move-thankyou{
+    0%{top:-100px;}
+    50%{top:40px;}
+    100%{top:-100px;}
+}
+
+#email-add{
+    /* eto yung div ng email */
+    position:absolute;
+    top:100px;
+    animation: text-move-thankyou 3s forwards;
+}
+#client-add{
+    font-size:large;
+}
+@keyframes text-move-thankyou{
+    0%{opacity: 1;}
+    50%{opacity: 1;  transform: translateY(0);}
+    100%{opacity:0; transform: translateY(-20px);}
 }
 .thank-you-div{
-    
-    background-color: rgba(100,100,100,0.7);
+    opacity:0;
     padding-bottom:1em;
-    color:white;
+    animation: thank-you-opaque 1s 3s forwards;
+}
+@keyframes thank-you-opaque{
+    0%{opacity:0; transform:translateY(-30px);}
+    100%{opacity:1; transform:translateY(0px);}
 }
 #main-page-link{
     text-decoration: none;
@@ -612,7 +650,7 @@
     padding: 0 10px;
     cursor:pointer;
     font-weight:600;
-    color:white;
+    color:black;
 }
 #back-bg-div{
     display:flex; display: -webkit-flex;
@@ -624,15 +662,14 @@
 #back-icon{
     background:
         url("arrow-left.png");
-        filter:invert();
     background-position:left;
     background-size: 100px 2em;
     height:2em;
     width:40px;
-    transition:0.3s;
 }
 #back-bg-div:hover > #back-icon{
     background-position:right;
+    transition: background-position 0.3s;
 }
 
 /* #submit-bg-div{
@@ -696,11 +733,16 @@
         width:180px;
         margin:0;
     }
+    .nav-link-container:hover{
+        /* background-color: #484848; */
+        transition:background-size 0.5s cubic-bezier(.78,.26,1,.57);
+        background-size:200px;
+    }
     .store-item{
         transition: all 0.3s ease-in 300ms;
     }
     .nav-link-container span{
-        text-align:left;
+        text-align:center;
     }
     .nav-link{
         padding:4px 0 0 10px;
