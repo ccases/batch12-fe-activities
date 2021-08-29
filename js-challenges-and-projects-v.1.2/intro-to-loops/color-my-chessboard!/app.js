@@ -3,3 +3,7 @@ const squares = Array.from(document.querySelectorAll('.grid div'))
 
 //Your goal is to add a chessboard color pattern to this blank board using loops and Arrays.
 //write code here
+
+for(let i = 0; i<squares.length; i++){
+    squares[i].classList.add((i%2 === 0?"even" : "odd"));
+}

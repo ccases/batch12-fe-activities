@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Momentum</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/">
+        <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io//favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io//favicon-16x16.png">
+        <link rel="manifest" href="assets/favicon_io//site.webmanifest">
+
+        <link rel="stylesheet" href="/assets/style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet"> 
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        
+        <div id = "main">
+            
+
+            <div class="display-initial" id="bg-image-blur">&nbsp</div>
+            <div class="display-initial" id="sign-in-div">
+                <p class="xl-text" id="question">What is your name?</p>
+                <div class = "bottom-border" id = "name-input-div">
+                    <input class="l-input" id="name" type="text" placeholder="Your name" autocomplete="off">
+                    <button class="button-visible" id="name-button" type="submit">&nbsp</button>
+                </div>
+            </div>
+
+            <div class="" id="greeting-div">
+                <p class="l-text" id="">Welcome,</p>
+                <p id="greeting" class="xl-text">name!</p>
+            </div>
+            <div id="reset-div">
+                <button id = "reset-btn">
+                    <img src = "assets/refresh.svg" style="width:40px">
+                </button>
+            </div>
+            <div id = "time-date-div">
+                <p class = "xxl-text" id="time">00:00</p>
+                <p class = "xl-text" id="date">Monday, January 1</p>
+            </div>
+            <div id="main-focus-div">
+                <p class= "l-text">What is your main focus today?</p>
+                <p class="xl-text" id="main-focus" contenteditable="true" spellcheck="false">Click to edit!</p>
+            </div>
+            <div id = "quotes-div">
+                <button class="hidden-button" id="generate-quote"> <img src="assets/quotation.png" style="width:50px"> </button>
+                <p class="m-text" id="quote">Hello World!</p>
+                <p class="m-text" id="author"><strong>-Anonymous</strong></p>
+                <button class="hidden-button" id = "add-quote-btn"> Add a quote </button>
+                
+            </div>
+            <div id="todo-div">
+                <p class="l-text">What are you doing today?</p>
+                <div id="todo-container">
+                    <input class="l-text" id="todo-input" type="text" placeholder="To Do">
+                    <button class="hidden-button" id="add-todo">&nbsp</button>
+                </div>
+                <ul id="todo-list">
+                </ul>
+            </div>
+            <div class = "main-background " id="sky"><img src = "assets/sky.svg"></div>
+            <div class = "main-background " id="city3" style="--order:3;"><img src = "assets/city3.svg" ></div>
+            <div class = "main-background " id="city2" style="--order:2;"><img src = "assets/city2.svg" ></div>
+            <div class = "main-background " id="city1" style="--order:1;"><img src = "assets/city1.svg" ></div>
+            <div class = "main-background light" id="lights1" style="--order:6;"><img src = "assets/lights1.svg" ></div>
+            <div class = "main-background light" id="lights2" style="--order:5;"><img src = "assets/lights2.svg" ></div>
+            <div class = "main-background light" id="lights3" style="--order:4;"><img src = "assets/lights3.svg" ></div>
+        </div>
+            
+        <script src="/assets/script.js" async defer></script>
+    </body>
+</html>

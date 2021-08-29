@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.0"
+   width="1280.000000pt"
+   height="640.000000pt"
+   viewBox="0 0 1280.000000 640.000000"
+   preserveAspectRatio="xMidYMid meet"
+   id="svg6"
+   sodipodi:docname="city1.svg"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs10">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath7238">
+      <rect
+         style="opacity:1;fill:#62627b;fill-opacity:1;stroke-width:21.6246;stroke-linecap:square;stroke-linejoin:bevel"
+         id="rect7240"
+         width="1275.7473"
+         height="607.38684"
+         x="-1.7257243e-08"
+         y="8.6750469" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath7238-9">
+      <rect
+         style="opacity:1;fill:#62627b;fill-opacity:1;stroke-width:21.6246;stroke-linecap:square;stroke-linejoin:bevel"
+         id="rect7240-0"
+         width="1275.7473"
+         height="607.38684"
+         x="-1.7257243e-08"
+         y="8.6750469" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath7238-8">
+      <rect
+         style="opacity:1;fill:#62627b;fill-opacity:1;stroke-width:21.6246;stroke-linecap:square;stroke-linejoin:bevel"
+         id="rect7240-5"
+         width="1275.7473"
+         height="607.38684"
+         x="-1.7257243e-08"
+         y="8.6750469" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath12715">
+      <rect
+         style="opacity:1;fill:#bdbddf;fill-opacity:1;stroke-width:198.425;stroke-linecap:square;stroke-linejoin:bevel"
+         id="rect12717"
+         width="12757.474"
+         height="6502.2358"
+         x="-1.7257243e-07"
+         y="-6481.7891"
+         ry="0"
+         transform="scale(1,-1)" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath12957">
+      <rect
+         style="opacity:1;fill:#bdbddf;fill-opacity:1;stroke-width:19.8901;stroke-linecap:square;stroke-linejoin:bevel"
+         id="rect12959"
+         width="1280"
+         height="681.8941"
+         x="-57.334011"
+         y="-85.320488" />
+    </clipPath>
+  </defs>
+  <sodipodi:namedview
+     id="namedview8"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="pt"
+     showgrid="false"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:zoom="0.51872912"
+     inkscape:cx="409.65504"
+     inkscape:cy="631.35071"
+     inkscape:window-width="1920"
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <sodipodi:guide
+       position="1656.9342,136.84722"
+       orientation="0,-1"
+       id="guide7093" />
+    <sodipodi:guide
+       position="-1.7257244e-08,379.282"
+       orientation="1,0"
+       id="guide7101" />
+    <sodipodi:guide
+       position="1280,733.03516"
+       orientation="1,0"
+       id="guide7103" />
+  </sodipodi:namedview>
+  <g
+     inkscape:groupmode="layer"
+     id="layer1"
+     inkscape:label="city1"
+     style="display:inline">
+    <g
+       transform="matrix(0.1,0,0,-0.1,0,743.5)"
+       fill="#000000"
+       stroke="none"
+       id="g4"
+       style="fill:#29314a;fill-opacity:1"
+       clip-path="url(#clipPath12715)">
+      <path
+         d="m 11750,4542 c 0,-934 -3,-1221 -12,-1230 -16,-16 -680,-17 -709,-2 -18,10 -19,23 -19,174 v 164 l -56,42 c -32,25 -71,46 -92,49 l -37,6 -3,451 -2,450 -43,25 -42,24 -405,5 -405,5 -3,160 -3,160 -31,32 -32,33 H 9103 8350 V 3795 c 0,-1269 0,-1294 -19,-1305 -25,-13 -87,-13 -112,0 -18,10 -19,27 -19,581 v 571 l -25,30 -26,30 5,672 c 2,369 7,694 11,721 6,47 4,53 -35,108 l -42,57 -356,-2 -357,-3 -3,-757 -2,-758 h -148 c -81,0 -153,-4 -159,-8 -10,-6 -13,-101 -15,-398 l -3,-389 -275,-5 -275,-5 -5,-280 -5,-280 h -95 -95 l -3,1064 -2,1064 -238,333 -237,332 -3,-546 c -2,-500 -3,-548 -19,-559 -13,-10 -121,-13 -460,-13 h -443 v -554 -554 l -23,-6 c -12,-3 -48,-6 -79,-6 h -58 l -2,-192 -3,-193 h -275 -275 l -5,550 -5,550 -34,43 c -19,23 -44,45 -55,48 -12,2 -210,3 -441,2 l -420,-3 -5,-480 c -3,-264 -7,-481 -8,-482 -1,-2 -51,-3 -112,-3 h -110 l -2,-262 -3,-263 -24,-3 c -13,-2 -28,2 -32,10 -5,7 -9,325 -9,706 v 692 h -385 -385 l -2,-252 -3,-253 -79,-3 c -57,-2 -82,1 -87,10 -5,7 -9,122 -9,256 v 242 h -385 -385 l -2,-442 -3,-443 -224,-3 c -173,-2 -226,1 -233,10 -4,7 -8,451 -8,986 v 972 H 360 0 V 2868 1007 l 547,6 c 302,4 880,7 1285,7 h 737 l 3,58 3,57 h 120 120 l 5,-45 5,-45 70,-5 c 39,-3 75,-8 80,-11 6,-4 1977,-10 4380,-13 2829,-5 4382,-11 4405,-17 39,-11 416,-6 690,9 96,6 214,10 263,11 l 87,1 v 315 c 0,173 -1,316 -2,317 -2,1 -91,4 -198,7 l -195,6 -3,1979 -2,1978 -61,69 -61,69 h -264 -264 z M 8331,2265 c 6,-32 13,-297 10,-352 -1,-19 -130,-18 -137,1 -7,19 11,371 21,385 4,7 25,11 53,9 46,-3 47,-4 53,-43 z"
+         id="path2"
+         style="fill:#29314a;fill-opacity:1" />
+    </g>
+  </g>
+</svg>

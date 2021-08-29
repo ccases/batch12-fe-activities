@@ -1,0 +1,443 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif; 
+    /* weights: 300 and 400 */
+}
+:root{
+    --xxl-text: 7em;
+    --xl-text: 2.5em;
+    --l-text: 1.5em;
+    --m-text: 1em;
+    --s-text: 0.5em;
+}
+
+/* FIND KEYWORD COMMENT TO COMMENT OUT LATER */
+body{
+    position:relative;
+}
+/* TO COMMENT IN AGAIN LATER */
+/* .display-initial{
+    display:none;
+}
+.display-initial div{
+    display:none;
+}
+.display-initial p{
+    display:none;
+} */
+/* END COMMENT */
+#main{
+    height:100vh;
+    box-sizing: border-box;
+    background-size:cover;
+    background-position:center;
+    position:relative;
+    overflow:hidden;
+    display:grid;
+    /* grid-template-columns: 40px 400px 1fr 1fr 40px; */
+    grid-template-columns: 40px 300px 1fr 1fr 40px;
+    grid-template-rows: 40px repeat(6, 1fr) 40px;
+    grid-template-areas: 
+        ". . . . . "
+        ". greet quote todo . "
+        ". greet quote todo . "
+        ". . quote todo . "
+        ". mf mf todo . "
+        ". time time todo . "
+        ". time time reset . "
+        ". . . . . ";
+}
+.main-background{
+    position:absolute;
+    z-index:-1;
+    bottom:0px;
+    display:grid;
+    place-items: center;
+    height:100%;
+    user-select: none;
+}
+#lights1, #lights2, #lights3, #city1, #city2, #city3{
+    opacity:0;
+    transition: opacity 0.5s;
+}
+.init-animation{
+    animation: to-visible 0.5s calc(var(--order)*0.4s) forwards;
+    -webkit-animation: to-visible 0.5s calc(var(--order)*0.4s) forwards;
+}
+#lights1.turn-on-lights, #lights2.turn-on-lights, #lights3.turn-on-lights{
+    /* animation:to-visible, 0.5s forwards; */
+    opacity: 1;
+}
+
+#bg-image-blur{
+    position:absolute;
+    box-sizing: border-box;
+    height:calc(100vh + 20px);
+    width:calc(100vw + 20px);
+    top:-10px;
+    left:-10px;
+    
+    /* TO COMMENT IN AGAIN LATER */
+    /* z-index:-1; */
+    z-index:99;
+    background-image: url("sky.png");
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position:center;
+    /* background-attachment:fixed; */
+    /* filter:blur(10px); */
+    /* box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 ); */
+    /* border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 ); */
+}
+#sign-in-div{
+    display:grid;
+    place-content: center;
+    box-sizing: border-box;
+    position:absolute;
+    top:0;
+    left:0;
+    height:calc(100vh);
+    width:calc(100vw);
+    /* TO COMMENT OUT OR IN */
+    /* z-index:-1; */
+    z-index:100;
+    background:none;
+}
+textarea{
+    color:white;
+    outline:none;
+    border:none;
+    background: rgba(255,255,255, 0.3);
+    transition:0.3s;
+}
+#generate-quote{
+    filter: invert();
+}
+#input-quote-div{
+    display:grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas:
+        "text text"
+        "author author"
+        "check ekis";
+    place-items: center;
+}
+#input-quote{
+    grid-area:text;
+    height:5em;
+    padding: 0px 10px;
+}
+#input-author{
+    grid-area:author;
+    padding-left:10px;
+    background: rgba(255, 255, 255, 0.3);
+}
+#add-btn-id{
+    grid-area: check;
+    /* place-self: start; */
+}
+#cancel-btn-id{
+    grid-area: ekis;
+    /* place-self: start; */
+}
+#input-quote{
+    grid-area:text;
+    height:3em;
+    width:100%;
+}
+input[type=text]{
+    outline:none;
+    background:none;
+    border:none;
+    color:white;
+    transition:0.3s;
+}
+input[type=text]:focus, input[type=text]:hover{
+    background: rgba(255, 255, 255, 0.3);
+}
+
+#name{
+    height: var(--l-text);
+    width: 16em;
+    font-size: var(--l-text);
+    padding-left:10px;
+}
+
+#name-button{
+    appearance:none;
+    border:none;
+    background:none;
+    font-size:var(--l-text);
+    width:var(--l-text);
+    height: var(--l-text);
+    background-image:url("sign-in.png");
+    filter:invert();
+    background-position:center;
+    background-size:cover;
+    background-repeat:no-repeat;
+}
+
+.slide-up{
+    animation: slide-up-div 1s forwards;
+    -webkit-animation: slide-up-div 1s forwards;
+}
+@keyframes slide-up-div{
+    0%{ transform: translateY(0);
+        /* background-position: initial; */
+    }
+    100%{ transform: translateY(calc(-100vh - 50px));
+        /* background-position:0 calc(-100vh - 50px); */
+    }
+}
+@-webkit-keyframes slide-up-div{
+    0%{ -webkit-transform: translateY(0);
+    }
+    100%{ -webkit-transform: translateY(calc(-100vh - 50px));
+    }
+}
+
+#question{
+    text-align: left;
+}
+.make-invisible{
+    animation: to-invisible 0.5s forwards;
+}
+.make-visible{
+    animation: to-visible 0.7s forwards;
+}
+@keyframes to-invisible{
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+@-webkit-keyframes to-invisible{
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+@keyframes to-visible{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+@-webkit-keyframes to-visible{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+#greeting-div{
+    grid-area: greet;
+    overflow-wrap: break-word;
+}
+#quotes-div{
+    grid-area: quote;
+    display:flex; display:-webkit-flex;
+    flex-flow:column;
+    justify-content: space-between;
+    align-items: center;
+    margin:0 30px;
+    padding: 20px 10px;
+    height:100%;
+    background-color: rgba(98,92,123, 0.2);
+    transition:background-color 0.3s;
+}
+#quotes-div:hover{
+    background-color: rgba(98,92,123, 0.5);
+}
+#quotes-div p{
+    text-align: center;
+}
+#todo-div{
+    grid-area: todo;
+    display:flex; display: -webkit-flex;
+    flex-flow:column;
+    align-content: flex-start;
+    position:relative;
+}
+#todo-container{
+    display:grid;
+    grid-template-columns: 1fr 50px;
+    align-items: center;
+    width:100%;
+    padding-top:10px;
+}
+#todo-input{
+    height:2em;
+    width:100%-40px;
+    padding: 0 10px;
+}
+#add-todo{
+    height:30px;
+    width:30px;
+    background-image:url("add.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-left: 20px;
+}
+.todo-item{
+    /* yung checkbox mismo */
+    /* visibility:hidden; */
+    display:none;
+    height:var(--l-text);
+    width:var(--l-text);
+}
+.todo-item-class{
+    /* yung label ng checkbox */
+    color: white;
+    font-size: var(--l-text);
+}
+.todo-item-div{
+    overflow:hidden;
+    /* animation: growDiv 0.7s forwards; */
+    height:0em;
+    transition:height 0.7s;
+
+    display:flex; display:-webkit-flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right:10px;
+    /* padding: 5px; */
+    /* margin: 5px 0; */
+    background: rgba(98,92,123, 0.2);
+}
+.todo-item-div.give-height{
+    height:3em;
+}
+.todo-item-class{
+    padding-left:20px;
+    transition:color 0.5s;
+    cursor:pointer;
+}
+input:checked + label{
+    color: rgb(109, 106, 124);
+}
+
+@keyframes growDiv{
+    0%{
+        height: 0;
+    }
+    100%{
+        height:3em;
+    }
+}
+
+#firework-canvas{
+    display:none;
+    position:absolute;
+    height:100%;
+    width:100%;
+}
+#firework-canvas img{
+    height:100%;
+    width:auto;
+}
+
+.collapse{
+    animation: heightToZero 0.7s forwards;
+    overflow:hidden;
+}
+
+@keyframes heightToZero{
+    0%{ height:calc(29.6px); }
+    100%{ height: 0; }
+}
+.todo-delete{
+    height: var(--l-text);
+    width: var(--l-text);
+    background: url("trash.png");
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: invert();
+}
+#main-focus-div{
+    grid-area: mf;
+}
+#time-date-div{
+    grid-area: time;
+    justify-self: start;
+    align-self: end;
+    mix-blend-mode: lighten;
+}
+#reset-div{
+    grid-area:reset;
+    place-self:end;
+}
+#add-quote-btn{
+    color:white;
+    background: rgba(255,255,255, 0.3);
+    border:none;
+    padding: 0 10px;
+    height:2em;
+}
+.hide{
+    display: none;
+}
+button{
+    border:none;
+    background:none;
+    transition:0.3s;
+    cursor: pointer;
+}
+
+.cancel-btn{
+    width:30px;
+    height:30px;
+    background:url("cancel.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: 0.3s;
+}
+.add-btn{
+    width:30px;
+    height:30px;
+    background:url("add.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: 0.3s;
+}
+button:hover{
+    transform: scale(1.2);
+}
+.xxl-text{
+    font-size: var(--xxl-text);
+}
+
+.xl-text{
+    font-size: var(--xl-text);
+}
+
+.l-text{
+    font-size:var(--l-text);
+}
+
+.m-text{
+    font-size:var(--m-text);
+}
+
+.s-text{
+    font-size:var(--s-text);
+}
+p{
+    color:white;
+}
