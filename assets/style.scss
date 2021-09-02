@@ -1,7 +1,10 @@
+$text-main: #fffff1;
+
 * {
   padding: 0;
   margin: 0;
   font-family: "Montserrat", sans-serif;
+  // available weights: 400, 600
 }
 
 #main {
@@ -18,19 +21,12 @@
 .name-h1 {
   padding: 0 0.5em;
 }
-
 .name-h1:hover {
   color: red;
 }
 
 #name-div {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row nowrap;
-          flex-flow: row nowrap;
+  flex-flow: row nowrap;
   font-size: larger;
 }
-/*# sourceMappingURL=style.css.map */

@@ -26,12 +26,10 @@ let quotes = [
     {quote: "When you want something, all the universe conspires in helping you to achieve it.", author:"Paulo Coelho"},
     ];
 const quotesInitLen = quotes.length;
-// randomizeBg(6);
 setInterval(showDateAndTime,1000);
 randomQuote();
 
 let main = document.getElementById("main");
-// let canvas = document.getElementById("firework-canvas");
 let initComplete = false;
 
 let nameInput = document.getElementById("name");
@@ -39,24 +37,27 @@ let nameBtn = document.getElementById("name-button");
 nameBtn.addEventListener("click", goToMain);
 nameInput.addEventListener("keyup", function(event){
     event.preventDefault();
-    if (event.code === "Enter" || 
-    (event.location == 3 && event.key == "Enter")) { //to also catch the numpad enter
+    if (keyIsEnter(event)) { 
         nameBtn.click();
-        // console.log("🦾");
-        console.log("Location of key pressed: " + event.location);
     }
 });
+
 let addTodo = document.getElementById("add-todo");
 let todoInput = document.getElementById("todo-input");
 todoInput.addEventListener("keyup", function(event){
     event.preventDefault();
-    if (event.code === "Enter" || 
-    (event.location == 3 && event.key == "Enter")) { //to also catch the numpad enter
+    if (keyIsEnter(event)) { 
         addTodo.click();
-        // console.log("🦾");
-        console.log("Location of key pressed: " + event.location);
     }
 });
+
+function keyIsEnter(e){
+    if(e.code === "Enter" || 
+    (e.location == 3 && e.key == "Enter")) //to also catch the numpad enter
+        return true;
+    
+    return false;
+}
 
 let todoListItems = 0;
 let lights = document.getElementsByClassName("light");
@@ -93,7 +94,6 @@ function makeTodo(){
         todoListItems)}`;
     lbl.appendChild(document.
         createTextNode(todoInput.value));
-    // lbl.setAttribute("onClick", "todoDone(this)");
     
     let todoDelete = document.createElement("button");
     todoDelete.classList.add("todo-delete");
@@ -115,11 +115,9 @@ function makeTodo(){
 function todoDone(e){
     if(!e.checked){
         e.checked = true;
-        // console.log("trulalu");
     }
     currLight++;
     if(currLight == lights.length) currLight = 0;
-    // cycleLights(currLight);
     console.log("todo Done");
     blinkLights();
     setTimeout(function() {
@@ -141,6 +139,7 @@ function cycleLights(n){
         
     }
 }
+
 function blinkLights(){
     for(let j = 0; j < lights.length; j++){
         setTimeout(function() {
@@ -148,14 +147,14 @@ function blinkLights(){
                 lights[j].classList.toggle("turn-on-lights");
             }
             }, 0);
-        
     }
+
     for(let k = 0; k < lights.length; k++){
         setTimeout(function(){
             lights[k].classList.toggle("turn-on-lights");
         }, 1000);
-        console.log("deleting");
     }
+
     for(let i = 0; i < lights.length; i++){
         setTimeout(function(){
             lights[i].classList.toggle("turn-on-lights");
@@ -165,11 +164,7 @@ function blinkLights(){
 
 function deleteTodo(e){
     let p = e.parentNode;
-    // p.classList.add("collapse");
     p.classList.remove("give-height");
-    // setTimeout(function() {
-    //     p.classList.toggle("give-height");
-    // }, 700);
     setTimeout(function(){
         while(p.firstChild){
         p.removeChild(p.firstChild);
@@ -187,10 +182,13 @@ function reset(){
     for(let i = 0; i < list.length; i++){
         deleteTodo(list[i]);
     }
+
     getRandomQuote(quotesInitLen);
+
     while(quotes.length != quotesInitLen){
         quotes.pop();
     }
+
     let mf = document.getElementById("main-focus");
     mf.textContent = "Click to edit!";
 }
@@ -210,11 +208,12 @@ function showQuoteInterface(){
     addQuote.classList.add("hide");
     // console.log(addQuote.classList);
     const quotesDiv = document.getElementById("quotes-div");
+
     const container = document.createElement("div");
     container.setAttribute("id", "input-quote-div");
     container.style.height = "80%";
+
     const inputQuote = document.createElement("textarea");
-    // inputQuote.type = "textarea";
     inputQuote.classList.add("m-text");
     inputQuote.setAttribute("id", "input-quote");
     inputQuote.setAttribute("rows", 5);
@@ -231,24 +230,26 @@ function showQuoteInterface(){
     addBtn.innerHTML = "&nbsp";
     addBtn.classList.add("add-btn");
     addBtn.setAttribute("id", "add-btn-id");
-    container.appendChild(addBtn);
     addBtn.addEventListener("click", storeQuote);
-
+    container.appendChild(addBtn);
+    
     const cancelBtn = document.createElement("button");
     cancelBtn.innerHTML = "&nbsp";
     cancelBtn.classList.add("cancel-btn");
     cancelBtn.setAttribute("id", "cancel-btn-id");
-    container.appendChild(cancelBtn);
     cancelBtn.addEventListener("click", cancelQuote);
-
+    container.appendChild(cancelBtn);
+    
     quotesDiv.appendChild(container);
 }
+
+const quoteDisplayed = document.getElementById("quote");
+const authorDisplayed = document.getElementById("author");
+
 function storeQuote(){
     const inputQuote = 
         {quote: document.getElementById("input-quote").value,
         author: document.getElementById("input-author").value};
-    const quoteDisplayed = document.getElementById("quote");
-    const authorDisplayed = document.getElementById("author");
 
     if(inputQuote.quote == '') return;
     if(inputQuote.author == '') {
@@ -265,9 +266,9 @@ function storeQuote(){
 }
 
 function cancelQuote(){
-    const quoteDisplayed = document.getElementById("quote");
-    const authorDisplayed = document.getElementById("author");
+    
     const container = document.getElementById("input-quote-div");
+
     while(container.firstChild){
         container.firstChild.remove();
     }
@@ -343,19 +344,6 @@ function showDateAndTime(){
 
     dateText.textContent = date;
     timeText.textContent = time;
-}
-
-function randomizeBg(nBg){ // how many bgs available
-    let main = document.getElementById("main");
-    let signIn = document.getElementById("bg-image-blur");
-    let bgPath = "url(assets/backgrounds/bg-" +
-        makeNDigit(3, Math.floor(Math.random() * nBg) + 1) + 
-        ".jpg)";
-    
-    signIn.style.backgroundImage = bgPath;
-    // main.style.backgroundImage = bgPath;
-    // main.style.background = "#555555";
-    console.log(bgPath);
 }
 
 function makeNDigit(n,x){ //by padding N zeros to x
