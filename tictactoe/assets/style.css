@@ -27,7 +27,6 @@
 .p1-marker {
   background-color: red;
   opacity: 1;
-  pointer-events: none;
 }
 
 .p2-hover {
@@ -37,5 +36,8 @@
 .p2-marker {
   background-color: blue;
   opacity: 1;
+}
+
+.no-ptr-events {
   pointer-events: none;
 }
