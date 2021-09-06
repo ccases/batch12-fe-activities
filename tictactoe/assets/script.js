@@ -1,3 +1,5 @@
+"use strict";
+
 let p1turn = true,
   p2turn = false;
 let p1score = 0,
@@ -13,10 +15,51 @@ let textPromptTimer;
 let p1TurnPrompt = "It's Player 1's turn. (X)";
 let p2TurnPrompt = "It's Player 2's turn. (O)";
 
+let sfx = document.getElementsByClassName("sfx");
+// [0] = a sfx
+let music = document.getElementsByClassName("music");
+let musicVol = document.getElementById("music-vol");
+musicVol.addEventListener("click", (e) => {
+  console.log("clicked music");
+  let img = document.getElementById("music-img");
+  if (e.target.checked) {
+    for (let m of music) {
+      m.muted = false;
+    }
+    //set image to unmuted
+    img.setAttribute("src", "assets/music-normal.svg");
+  } else {
+    for (let m of music) {
+      m.muted = true;
+    }
+    // set image to muted
+    img.setAttribute("src", "assets/music-muted.svg");
+  }
+});
+let sfxVol = document.getElementById("sfx-vol");
+sfxVol.addEventListener("click", (e) => {
+  let img = document.getElementById("sfx-img");
+  console.log("clicked sfx");
+  if (e.target.checked) {
+    console.log("unmuting!");
+    for (let s of sfx) {
+      s.muted = false;
+    }
+    img.setAttribute("src", "assets/sfx-normal.svg");
+  } else {
+    console.log("muting!");
+    for (let s of sfx) {
+      s.muted = true;
+    }
+    img.setAttribute("src", "assets/sfx-muted.svg");
+  }
+});
+
 addSquareListeners();
 initPrompt();
 
 function initPrompt() {
+  // music[0].play();
   if (p1turn) {
     textPromptTimer = typewriterFx(p1TurnPrompt);
   } else textPromptTimer = typewriterFx(p2TurnPrompt);
@@ -45,9 +88,7 @@ nextBtn.addEventListener("click", (e) => {
   viewMove(moveN);
 });
 
-// console.log(tp);
 function hideTextPrompt() {
-  // expecting only 1 at a time
   tp[0].classList.add("hide");
 }
 
@@ -58,7 +99,7 @@ function showTextPrompt() {
 
 function typewriterFx(str) {
   showTextPrompt();
-
+  // wowowow this closure works surprisingly well.. TOO well
   let c = 0;
   console.log(c);
   function run(str) {
@@ -137,6 +178,7 @@ function addSquareListeners() {
     });
 
     squares[i].addEventListener("click", function () {
+      sfx[0].play();
       if (p1turn) {
         p1turn = false;
         p2turn = true;
@@ -163,6 +205,9 @@ function addSquareListeners() {
         showBtns();
         removePtrEvents();
         showWinner(); // parse the winner + win location (or draw)
+
+        clearInterval(textPromptTimer);
+        textPromptTimer = typewriterFx(p1TurnPrompt);
       }
       moveN++;
     });
@@ -198,8 +243,7 @@ function showWinner() {
       ? moveHistory[len - 1][1][1]
       : `no winner?`;
   console.log(`${win} ${result}`);
-  if (result == "X") {
-  }
+  return result;
 }
 function removePtrEvents() {
   for (let square of squares) {

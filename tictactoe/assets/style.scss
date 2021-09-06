@@ -4,16 +4,19 @@
   padding: 0;
   font-family: "Press Start 2P", cursive;
 }
-$border-color: #888888;
-$square-color: #eeeeee;
+$border-color: #0c1445ff;
+$square-color: #4c408eff;
 $grid-gap: 5px;
-$p1-color: #8bd5ee;
-$p2-color: #ff6262;
-$dark-text-color: #085a73;
-$light-text-color: #08acd5;
+$p1-color: #8d5273ff;
+$p2-color: #e8817fff;
+$dark-text-color: #311f62ff;
+$light-text-color: #bea9deff;
+$prompt-bg-color: #e3e2c4ff;
+// $prompt-border-color: #0c1445ff;
 
 @mixin mark($img) {
   background: $img;
+  // filter: invert(1);
   background-size: 70%;
   background-position: center;
   background-repeat: no-repeat;
@@ -82,16 +85,42 @@ $light-text-color: #08acd5;
     height: 50px;
     border: none;
   }
+  .reset {
+    color: $dark-text-color;
+    margin: 5px;
+    &:hover {
+      border: 5px solid $border-color;
+      border-radius: 7px;
+      padding: 7px;
+    }
+  }
+  .settings-container {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    // width: 100px;
+    input[type="checkbox"] {
+      appearance: none;
+    }
+    label {
+      margin-left: 10px;
+      height: 35px;
+      width: 35px;
+    }
+  }
 }
 
 .text-prompt {
-  border: 5px solid darkslategray;
-  background: #dddddd;
+  border: 7px solid $border-color;
+  background: $prompt-bg-color;
   border-radius: 5px;
   width: calc(100% - 20px);
   padding: 10px;
   margin: 10px;
-  height: 100px;
+  min-height: 100px;
   font-size: 1.5em;
   position: absolute;
   bottom: 0px;
