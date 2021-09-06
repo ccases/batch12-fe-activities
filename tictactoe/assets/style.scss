@@ -1,0 +1,106 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Press Start 2P", cursive;
+}
+$border-color: #888888;
+$square-color: #eeeeee;
+$grid-gap: 5px;
+$p1-color: #8bd5ee;
+$p2-color: #ff6262;
+$dark-text-color: #085a73;
+$light-text-color: #08acd5;
+
+@mixin mark($img) {
+  background: $img;
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#main {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  background: url("pokemon-wp.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+
+  h1 {
+    text-align: center;
+    color: $light-text-color;
+  }
+
+  .game-area {
+    display: grid;
+    grid-template-rows: 100px 100px 100px;
+    grid-template-columns: 100px 100px 100px;
+    gap: $grid-gap;
+    background: $border-color;
+    margin: 10px 0;
+
+    .square {
+      background-color: $square-color;
+      display: grid;
+      place-items: center;
+      font-size: 90%;
+    }
+
+    .p1-hover {
+      @include mark(url("x.svg"));
+      background-color: $p1-color;
+      opacity: 0.5;
+    }
+    .p1-marker {
+      @include mark(url("x.svg"));
+      background-color: $p1-color;
+      opacity: 1;
+    }
+
+    .p2-hover {
+      @include mark(url("o.svg"));
+      background-color: $p2-color;
+      opacity: 0.5;
+    }
+    .p2-marker {
+      @include mark(url("o.svg"));
+      background-color: $p2-color;
+      opacity: 1;
+    }
+  }
+  #history-nav-container {
+    width: 300px;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+  }
+  button {
+    background: none;
+    height: 50px;
+    border: none;
+  }
+}
+
+.text-prompt {
+  border: 5px solid darkslategray;
+  background: #dddddd;
+  border-radius: 5px;
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin: 10px;
+  height: 100px;
+  font-size: 1.5em;
+  position: absolute;
+  bottom: 0px;
+}
+
+.no-ptr-events {
+  pointer-events: none;
+}
+
+.hide {
+  display: none;
+}

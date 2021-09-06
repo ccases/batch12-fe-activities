@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="70mm"
+   height="70mm"
+   viewBox="0 0 70.000001 70.000001"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   sodipodi:docname="x.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="1.0230034"
+     inkscape:cx="-7.3313542"
+     inkscape:cy="90.420035"
+     inkscape:window-width="1920"
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     showguides="true"
+     inkscape:guide-bbox="true">
+    <sodipodi:guide
+       position="44.707792,15.270398"
+       orientation="1,0"
+       id="guide4410" />
+    <sodipodi:guide
+       position="126.56541,90.726846"
+       orientation="0,-1"
+       id="guide4412" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(16.730775,-57.482178)">
+    <path
+       id="rect4706-7-5-8-0"
+       style="stroke:#000000;stroke-width:0;stroke-linecap:square;stroke-linejoin:bevel"
+       d="m 13.269226,87.482178 h 10 v 10 h -10 z m -9.9999997,0 h 9.9999997 v 10 H 3.2692263 Z m 29.9999997,0 h -10 v 10 h 10 z M 3.2692263,107.48218 H 13.269226 V 97.482178 H 3.2692263 Z m -9.9999997,0 h 10 V 97.482178 h -10 z m 0,10 h 10 v -10 h -10 z m -10.0000006,0 h 10.0000001 v -10 H -16.730774 Z m 10.0000006,10 h 10 v -10 h -10 z m -10.0000006,0 h 10.0000001 v -10 H -16.730774 Z m 50,-20 h -10 V 97.482178 h 10 z m 10,0 h -10 V 97.482178 h 10 z m 0,10 h -10 v -10 h 10 z m 10,0 h -10 v -10 h 10 z m -10,10 h -10 v -10 h 10 z m 10,0 h -10 v -10 h 10 z m -20,-50.000002 h -10 v 10 h 10 z m 10,0 h -10 v 10 h 10 z m 0,-10 h -10 v 10 h 10 z m 9.999996,0 h -10 v 10 h 10 z m -9.999996,-10 h -10 v 10 h 10 z m 9.999996,0 h -10 v 10 h 10 z m -49.9999954,20 H 13.269227 v 10 H 3.2692266 Z m -10,0 h 10 v 10 h -10 z m -5e-7,-10 h 10 v 10 h -10 z m -10.0000001,0 h 10.0000001 v 10 H -16.730774 Z m 10.0000001,-9.999996 h 10 v 10 h -10 z m -10.0000001,0 h 10.0000001 v 10 H -16.730774 Z" />
+  </g>
+</svg>

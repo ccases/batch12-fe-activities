@@ -1,43 +1,129 @@
 * {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: "Press Start 2P", cursive;
 }
 
 #main {
-  height: 100vw;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  flex-flow: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  background: url("pokemon-wp.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.game-area {
+#main h1 {
+  text-align: center;
+  color: #08acd5;
+}
+
+#main .game-area {
+  display: -ms-grid;
   display: grid;
-  grid-template-rows: 100px 100px 100px;
-  grid-template-columns: 100px 100px 100px;
+  -ms-grid-rows: 100px 100px 100px;
+      grid-template-rows: 100px 100px 100px;
+  -ms-grid-columns: 100px 100px 100px;
+      grid-template-columns: 100px 100px 100px;
+  gap: 5px;
+  background: #888888;
+  margin: 10px 0;
 }
 
-.square {
-  border: 5px solid #aaaaaa;
+#main .game-area .square {
+  background-color: #eeeeee;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  font-size: 90%;
 }
-.p1-hover {
-  background-color: red;
+
+#main .game-area .p1-hover {
+  background: url("x.svg");
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #8bd5ee;
   opacity: 0.5;
 }
-.p1-marker {
-  background-color: red;
+
+#main .game-area .p1-marker {
+  background: url("x.svg");
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #8bd5ee;
   opacity: 1;
 }
 
-.p2-hover {
-  background-color: blue;
+#main .game-area .p2-hover {
+  background: url("o.svg");
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #ff6262;
   opacity: 0.5;
 }
-.p2-marker {
-  background-color: blue;
+
+#main .game-area .p2-marker {
+  background: url("o.svg");
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #ff6262;
   opacity: 1;
+}
+
+#main #history-nav-container {
+  width: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+#main button {
+  background: none;
+  height: 50px;
+  border: none;
+}
+
+.text-prompt {
+  border: 5px solid darkslategray;
+  background: #dddddd;
+  border-radius: 5px;
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin: 10px;
+  height: 100px;
+  font-size: 1.5em;
+  position: absolute;
+  bottom: 0px;
 }
 
 .no-ptr-events {
   pointer-events: none;
 }
+
+.hide {
+  display: none;
+}
+/*# sourceMappingURL=style.css.map */
