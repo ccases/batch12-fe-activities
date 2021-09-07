@@ -24,6 +24,7 @@
   background: url("pokemon-wp.jpg");
   background-position: center;
   background-repeat: no-repeat;
+  padding-bottom: 200px;
 }
 
 #main h1 {
@@ -85,6 +86,11 @@
   background-repeat: no-repeat;
   background-color: #e8817fff;
   opacity: 1;
+}
+
+#main .game-area .win {
+  -webkit-animation: color-cycle 2s linear alternate infinite;
+          animation: color-cycle 2s linear alternate infinite;
 }
 
 #main #history-nav-container {
@@ -164,5 +170,29 @@
 
 .hide {
   display: none;
+}
+
+@-webkit-keyframes color-cycle {
+  0% {
+    background-color: inherit;
+  }
+  50% {
+    background-color: #9ea9edff;
+  }
+  100% {
+    background-color: initial;
+  }
+}
+
+@keyframes color-cycle {
+  0% {
+    background-color: inherit;
+  }
+  50% {
+    background-color: #9ea9edff;
+  }
+  100% {
+    background-color: initial;
+  }
 }
 /*# sourceMappingURL=style.css.map */

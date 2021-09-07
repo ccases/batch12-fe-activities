@@ -10,7 +10,13 @@
     <title></title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="/assets/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
     <link rel="shortcut icon" href="#" />
   </head>
   <body>
@@ -20,25 +26,76 @@
         <a href="#">upgrade your browser</a> to improve your experience.
       </p>
     <![endif]-->
+    <audio
+      src="assets/audio/victory.mp3"
+      class="music"
+      id="victory-music"
+      preload="auto"
+    ></audio>
+    <audio
+      src="assets/audio/abutton.mp3"
+      class="sfx"
+      id="a-sfx"
+      preload="auto"
+    ></audio>
+    <audio
+      src="assets/audio/vszinnia.mp3"
+      class="music"
+      id="battle"
+      preload="auto"
+    ></audio>
+    <div class="text-prompt hide"></div>
+
     <div id="main">
       <h1>TIC TAC TOE</h1>
       <div class="game-area">
-        <div class="square" id="s00"></div>
-        <div class="square" id="s01"></div>
-        <div class="square" id="s02"></div>
+        <div class="square" id="s00" winner="false"></div>
+        <div class="square" id="s01" winner="false"></div>
+        <div class="square" id="s02" winner="false"></div>
 
-        <div class="square" id="s10"></div>
-        <div class="square" id="s11"></div>
-        <div class="square" id="s12"></div>
+        <div class="square" id="s10" winner="false"></div>
+        <div class="square" id="s11" winner="false"></div>
+        <div class="square" id="s12" winner="false"></div>
 
-        <div class="square" id="s20"></div>
-        <div class="square" id="s21"></div>
-        <div class="square" id="s22"></div>
+        <div class="square" id="s20" winner="false"></div>
+        <div class="square" id="s21" winner="false"></div>
+        <div class="square" id="s22" winner="false"></div>
       </div>
-      <button class="prev">Previous</button>
-      <button class="next">Next</button>
       <button class="reset">Reset</button>
+      <div id="history-nav-container">
+        <button class="move-first hide">
+          <img src="assets/first-move.svg" alt="" style="height: 100%" />
+        </button>
+        <button class="prev hide">
+          <img src="assets/prev.svg" alt="" style="height: 100%" />
+        </button>
+        <button class="next hide">
+          <img src="assets/next.svg" alt="" style="height: 100%" />
+        </button>
+        <button class="move-last hide">
+          <img src="assets/last-move.svg" alt="" style="height: 100%" />
+        </button>
+      </div>
+
+      <div class="settings-container">
+        <input type="checkbox" name="music-vol" id="music-vol" />
+        <label id="music-lbl" for="music-vol"
+          ><img
+            id="music-img"
+            src="assets/music-muted.svg"
+            alt=""
+            style="height: 100%"
+        /></label>
+        <input type="checkbox" name="sfx-vol" id="sfx-vol" />
+        <label id="sfx-lbl" for="sfx-vol"
+          ><img
+            id="sfx-img"
+            src="assets/sfx-muted.svg"
+            alt=""
+            style="height: 100%"
+        /></label>
+      </div>
     </div>
-    <script src="/assets/script.js" async defer></script>
+    <script src="assets/script.js" async defer></script>
   </body>
 </html>

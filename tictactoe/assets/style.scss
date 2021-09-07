@@ -12,6 +12,7 @@ $p2-color: #e8817fff;
 $dark-text-color: #311f62ff;
 $light-text-color: #bea9deff;
 $prompt-bg-color: #e3e2c4ff;
+$win-bg-color: #9ea9edff;
 // $prompt-border-color: #0c1445ff;
 
 @mixin mark($img) {
@@ -32,6 +33,7 @@ $prompt-bg-color: #e3e2c4ff;
   background-position: center;
   background-repeat: no-repeat;
 
+  padding-bottom: 200px;
   h1 {
     text-align: center;
     color: $light-text-color;
@@ -72,6 +74,10 @@ $prompt-bg-color: #e3e2c4ff;
       @include mark(url("o.svg"));
       background-color: $p2-color;
       opacity: 1;
+    }
+
+    .win {
+      animation: color-cycle 2s linear alternate infinite;
     }
   }
   #history-nav-container {
@@ -132,4 +138,16 @@ $prompt-bg-color: #e3e2c4ff;
 
 .hide {
   display: none;
+}
+
+@keyframes color-cycle {
+  0% {
+    background-color: inherit;
+  }
+  50% {
+    background-color: $win-bg-color;
+  }
+  100% {
+    background-color: initial;
+  }
 }
