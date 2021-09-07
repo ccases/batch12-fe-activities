@@ -43,9 +43,10 @@ body {
   }
 
   .game-area {
+    max-width: 500px;
     display: grid;
-    grid-template-rows: 100px 100px 100px;
-    grid-template-columns: 100px 100px 100px;
+    grid-template-rows: repeat(3, 100px);
+    grid-template-columns: repeat(3, 100px);
     gap: $grid-gap;
     background: $border-color;
     margin: 10px 0;
@@ -226,5 +227,11 @@ body {
   }
   100% {
     background-color: inherit;
+  }
+}
+
+@media (max-width: 600px) {
+  .text-prompt {
+    font-size: 1em;
   }
 }

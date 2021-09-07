@@ -28,29 +28,18 @@ let p2TurnPrompt = "It's Player 2's turn. (O)";
 let stringsToDisplay = [];
 
 let sfx = document.getElementsByClassName("sfx");
-for (let s of sfx) {
-  s.muted = true;
-}
 
 let musics = document.getElementsByClassName("music");
-for (let m of musics) {
-  m.muted = true;
-}
 
 let musicVol = document.getElementById("music-vol");
 musicVol.addEventListener("click", (e) => {
   console.log("clicked music");
   let img = document.getElementById("music-img");
   if (e.target.checked) {
-    for (let m of musics) {
-      m.muted = true;
-      m.volume = 0.5;
-    }
+    setVolMusic("mute");
     img.setAttribute("src", "assets/music-muted.svg");
   } else {
-    for (let m of musics) {
-      m.muted = false;
-    }
+    setVolMusic("unmute");
     img.setAttribute("src", "assets/music-normal.svg");
   }
 });
@@ -59,27 +48,72 @@ sfxVol.addEventListener("click", (e) => {
   let img = document.getElementById("sfx-img");
   console.log("clicked sfx");
   if (e.target.checked) {
-    for (let s of sfx) {
-      s.muted = true;
-    }
+    setVolSfx("mute");
     img.setAttribute("src", "assets/sfx-muted.svg");
   } else {
-    for (let s of sfx) {
-      s.muted = false;
-    }
+    setVolSfx("unmute");
     img.setAttribute("src", "assets/sfx-normal.svg");
   }
 });
 
+function setVolMusic(state) {
+  if (state == "mute") {
+    for (let m of musics) {
+      m.muted = true;
+      m.volume = 0.5;
+    }
+  } else if (state == "unmute") {
+    for (let m of musics) {
+      m.muted = false;
+    }
+  }
+}
+
+function setVolSfx(state) {
+  if (state == "mute") {
+    for (let m of sfx) {
+      m.muted = true;
+    }
+  } else if (state == "unmute") {
+    for (let m of sfx) {
+      m.muted = false;
+    }
+  }
+}
+
+function initSoundIcons() {
+  let sfxImg = document.getElementById("sfx-img");
+
+  if (sfxVol.checked) {
+    sfxImg.setAttribute("src", "assets/sfx-muted.svg");
+    setVolSfx("mute");
+  } else {
+    sfxImg.setAttribute("src", "assets/sfx-normal.svg");
+    setVolSfx("unmute");
+  }
+  let musicImg = document.getElementById("music-img");
+  if (musicVol.checked) {
+    setVolMusic("mute");
+    musicImg.setAttribute("src", "assets/music-muted.svg");
+  } else {
+    setVolMusic("unmute");
+    musicImg.setAttribute("src", "assets/music-normal.svg");
+  }
+}
+
 addSquareListeners();
 initGame();
+initSoundIcons();
 
 function initGame() {
+  hideTextPrompt();
   showBattleIntro();
-  playMusic("battle");
-  if (p1turn) {
-    textPromptTimer = typewriterFx(p1TurnPrompt);
-  } else textPromptTimer = typewriterFx(p2TurnPrompt);
+  playMusic("battle-music");
+  setTimeout(function () {
+    if (p1turn) {
+      textPromptTimer = typewriterFx(p1TurnPrompt);
+    } else textPromptTimer = typewriterFx(p2TurnPrompt);
+  }, 3200);
 }
 
 let firstMoveBtn = document.querySelector(".move-first");
@@ -125,15 +159,15 @@ tp[0].addEventListener("click", function () {
   }
 });
 
-function showNextMsg() {}
-
 function typewriterFx(str) {
   showTextPrompt();
   // wowowow this closure works surprisingly well.. TOO well
   let c = 0;
+  tp[0].textContent = "";
   console.log(c);
   function run(str) {
-    tp[0].textContent = str.substring(0, ++c);
+    // tp[0].textContent = str.substring(0, ++c);
+    tp[0].textContent += str.charAt(c++);
     if (c == str.length) {
       c = 0;
       clearInterval(textPromptTimer);
@@ -145,7 +179,12 @@ function typewriterFx(str) {
 }
 
 function viewMove(n) {
-  playSfx("a-sfx");
+  if (n == moveHistory.length || n == 0) {
+    playSfx("bump-sfx");
+  } else {
+    playSfx("a-sfx");
+  }
+
   console.log(n);
   let arr;
   if (n == 0) {

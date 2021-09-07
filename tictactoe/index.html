@@ -41,13 +41,19 @@
     <audio
       src="assets/audio/vszinnia.mp3"
       class="music"
-      id="battle"
+      id="battle-music"
       preload="auto"
     ></audio>
     <audio
       src="assets/audio/draw.mp3"
       class="music"
       id="draw-music"
+      preload="auto"
+    ></audio>
+    <audio
+      src="assets/audio/wallbump.mp3"
+      class="sfx"
+      id="bump-sfx"
       preload="auto"
     ></audio>
     <div class="text-prompt hide"></div>
@@ -89,19 +95,11 @@
       <div class="settings-container">
         <input type="checkbox" name="music-vol" id="music-vol" checked="true" />
         <label id="music-lbl" for="music-vol"
-          ><img
-            id="music-img"
-            src="assets/music-muted.svg"
-            alt=""
-            style="height: 100%"
+          ><img id="music-img" src="" alt="" style="height: 100%"
         /></label>
         <input type="checkbox" name="sfx-vol" id="sfx-vol" checked="true" />
         <label id="sfx-lbl" for="sfx-vol"
-          ><img
-            id="sfx-img"
-            src="assets/sfx-muted.svg"
-            alt=""
-            style="height: 100%"
+          ><img id="sfx-img" src="" alt="" style="height: 100%"
         /></label>
       </div>
     </div>

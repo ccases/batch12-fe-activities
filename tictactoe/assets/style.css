@@ -37,12 +37,13 @@ body {
 }
 
 #main .game-area {
+  max-width: 500px;
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: 100px 100px 100px;
-      grid-template-rows: 100px 100px 100px;
-  -ms-grid-columns: 100px 100px 100px;
-      grid-template-columns: 100px 100px 100px;
+  -ms-grid-rows: (100px)[3];
+      grid-template-rows: repeat(3, 100px);
+  -ms-grid-columns: (100px)[3];
+      grid-template-columns: repeat(3, 100px);
   gap: 5px;
   background: #0c1445ff;
   margin: 10px 0;
@@ -334,6 +335,12 @@ body {
   }
   100% {
     background-color: inherit;
+  }
+}
+
+@media (max-width: 600px) {
+  .text-prompt {
+    font-size: 1em;
   }
 }
 /*# sourceMappingURL=style.css.map */
