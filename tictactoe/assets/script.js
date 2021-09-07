@@ -20,10 +20,12 @@ let mainBody = document.getElementsByTagName("body");
 let squares = document.querySelectorAll(".square");
 let moveHistory = [];
 let moveN = 0;
+
 let tp = document.getElementsByClassName("text-prompt");
 let textPromptTimer;
 let p1TurnPrompt = "It's Player 1's turn. (X)";
 let p2TurnPrompt = "It's Player 2's turn. (O)";
+let stringsToDisplay = [];
 
 let sfx = document.getElementsByClassName("sfx");
 for (let s of sfx) {
@@ -41,14 +43,15 @@ musicVol.addEventListener("click", (e) => {
   let img = document.getElementById("music-img");
   if (e.target.checked) {
     for (let m of musics) {
+      m.muted = true;
+      m.volume = 0.5;
+    }
+    img.setAttribute("src", "assets/music-muted.svg");
+  } else {
+    for (let m of musics) {
       m.muted = false;
     }
     img.setAttribute("src", "assets/music-normal.svg");
-  } else {
-    for (let m of musics) {
-      m.muted = true;
-    }
-    img.setAttribute("src", "assets/music-muted.svg");
   }
 });
 let sfxVol = document.getElementById("sfx-vol");
@@ -56,17 +59,15 @@ sfxVol.addEventListener("click", (e) => {
   let img = document.getElementById("sfx-img");
   console.log("clicked sfx");
   if (e.target.checked) {
-    console.log("unmuting!");
-    for (let s of sfx) {
-      s.muted = false;
-    }
-    img.setAttribute("src", "assets/sfx-normal.svg");
-  } else {
-    console.log("muting!");
     for (let s of sfx) {
       s.muted = true;
     }
     img.setAttribute("src", "assets/sfx-muted.svg");
+  } else {
+    for (let s of sfx) {
+      s.muted = false;
+    }
+    img.setAttribute("src", "assets/sfx-normal.svg");
   }
 });
 
@@ -74,6 +75,8 @@ addSquareListeners();
 initGame();
 
 function initGame() {
+  showBattleIntro();
+  playMusic("battle");
   if (p1turn) {
     textPromptTimer = typewriterFx(p1TurnPrompt);
   } else textPromptTimer = typewriterFx(p2TurnPrompt);
@@ -111,21 +114,25 @@ function showTextPrompt() {
   tp[0].classList.remove("hide");
 }
 
+tp[0].addEventListener("click", function () {
+  // displays next message in array
+
+  if (stringsToDisplay.length > 1) {
+    playSfx("a-sfx");
+    stringsToDisplay.shift();
+    clearInterval(textPromptTimer);
+    textPromptTimer = typewriterFx(stringsToDisplay[0]);
+  }
+});
+
 function showNextMsg() {}
 
 function typewriterFx(str) {
   showTextPrompt();
   // wowowow this closure works surprisingly well.. TOO well
-  if (chain) {
-    str += "  ᐁ";
-    tp[0].addEventListener("click", showNextMsg);
-  } else {
-    tp[0].removeEventListener("click", showNextMsg);
-  }
   let c = 0;
   console.log(c);
   function run(str) {
-    // console.log(str.length);
     tp[0].textContent = str.substring(0, ++c);
     if (c == str.length) {
       c = 0;
@@ -138,6 +145,7 @@ function typewriterFx(str) {
 }
 
 function viewMove(n) {
+  playSfx("a-sfx");
   console.log(n);
   let arr;
   if (n == 0) {
@@ -151,7 +159,7 @@ function viewMove(n) {
   }
 
   let len = moveHistory[0].length;
-
+  console.log(arr);
   for (let i = 0; i < len; i++) {
     for (let j = 0; j < len; j++) {
       let s = document.getElementById(`s${i}${j}`);
@@ -171,17 +179,45 @@ function viewMove(n) {
   }
 }
 
+function showBattleIntro() {
+  let lower = document.createElement("lower-b");
+  lower.setAttribute("id", "lower-b");
+  lower.classList.add("blocker");
+
+  let upper = document.createElement("upper-b");
+  upper.setAttribute("id", "upper-b");
+  upper.classList.add("blocker");
+
+  let battleIntroDiv = document.createElement("div");
+  battleIntroDiv.setAttribute("id", "battle-intro-div");
+  battleIntroDiv.appendChild(lower);
+  battleIntroDiv.appendChild(upper);
+
+  mainBody[0].insertBefore(battleIntroDiv, tp[0]);
+
+  setTimeout(function () {
+    battleIntroDiv.remove();
+  }, 3100);
+}
+
 let resetBtn = document.querySelector(".reset");
 resetBtn.addEventListener("click", (e) => {
+  playSfx("a-sfx");
+  removeWinHighlight();
+  initGame();
+  moveN = 0;
+
+  moveHistory = [];
+  stringsToDisplay = [];
+
   for (let square of squares) {
     square.classList.remove("p1-hover");
     square.classList.remove("p1-marker");
     square.classList.remove("p2-hover");
     square.classList.remove("p2-marker");
     square.classList.remove("no-ptr-events");
-    square.setAttribute("winner", "false");
-    moveHistory = [];
 
+    square.setAttribute("winner", "false");
     hideBtns();
   }
 });
@@ -206,7 +242,7 @@ function addSquareListeners() {
     });
 
     squares[i].addEventListener("click", function () {
-      sfx[0].play();
+      playSfx("a-sfx");
       if (p1turn) {
         p1turn = false;
         p2turn = true;
@@ -236,11 +272,24 @@ function addSquareListeners() {
         showWinner(winner); // parse the winner + win location (or draw)
 
         playMusic("victory-music");
-        clearInterval(textPromptTimer);
-        textPromptTimer = typewriterFx(
-          `Congratulations, ${winner.charAt(0)}!`,
-          true
+        stringsToDisplay.push(
+          "Congratulations, " +
+            (winner.charAt(0) == "X" ? "Player 1 (X)" : "Player 2 (O)") +
+            "! ▽"
         );
+        stringsToDisplay.push("Click reset to restart the game.");
+        console.log(`stdisp.len : ${stringsToDisplay.length}`);
+        clearInterval(textPromptTimer);
+        textPromptTimer = typewriterFx(stringsToDisplay[0]);
+      } else if (winner == "draw") {
+        playMusic("draw-music");
+        showBtns();
+        removePtrEvents();
+
+        stringsToDisplay.push("It's a draw! ▽");
+        stringsToDisplay.push("Click reset to restart the game.");
+        clearInterval(textPromptTimer);
+        textPromptTimer = typewriterFx(stringsToDisplay[0]);
       }
       moveN++;
     });
@@ -255,7 +304,21 @@ function playMusic(musicId) {
   }
   let selection = document.getElementById(musicId);
   selection.play();
+  if (musicId == "draw-music") {
+    selection.loop = false;
+    return selection;
+  }
   selection.loop = true;
+  return selection;
+}
+
+function playSfx(sfxId) {
+  let sfxElem = document.getElementById(sfxId);
+  if (!sfxElem.paused && !sfx[0].muted) {
+    let sfxClone = sfxElem.cloneNode();
+    sfxClone.play();
+  }
+  sfxElem.play();
 }
 function showBtns() {
   prevBtn.classList.remove("hide");
@@ -272,12 +335,14 @@ function hideBtns() {
 
 function addWinHighlight() {
   for (let square of squares) {
+    console.log(square.getAttribute("winner"));
     if (square.getAttribute("winner") == "true") {
       if (!square.classList.contains("win")) {
         square.classList.add("win");
       }
     }
   }
+  console.log("adding win highlight");
 }
 
 function removeWinHighlight() {

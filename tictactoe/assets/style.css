@@ -6,6 +6,10 @@
   font-family: "Press Start 2P", cursive;
 }
 
+body {
+  overflow: hidden;
+}
+
 #main {
   height: 100vh;
   display: -webkit-box;
@@ -24,7 +28,7 @@
   background: url("pokemon-wp.jpg");
   background-position: center;
   background-repeat: no-repeat;
-  padding-bottom: 200px;
+  padding-bottom: 100px;
 }
 
 #main h1 {
@@ -113,7 +117,7 @@
 }
 
 #main .reset {
-  color: #311f62ff;
+  color: #bea9deff;
   margin: 5px;
 }
 
@@ -151,6 +155,43 @@
   width: 35px;
 }
 
+#battle-intro-div {
+  height: 100vh;
+  position: absolute;
+  float: top;
+  background: none;
+  z-index: 99;
+}
+
+#battle-intro-div .blocker {
+  background-color: black;
+}
+
+#battle-intro-div #upper-b {
+  position: absolute;
+  top: 0px;
+  width: 100vw;
+  height: 50vh;
+  background-image: url("x.svg");
+  background-position-x: 50%;
+  background-position-y: calc(100% + 130px);
+  background-repeat: no-repeat;
+  -webkit-animation: upper-intro1 3s forwards;
+          animation: upper-intro1 3s forwards;
+}
+
+#battle-intro-div #lower-b {
+  position: absolute;
+  bottom: 0px;
+  width: 100vw;
+  height: 50vh;
+  background-position-x: 50%;
+  background-position-y: calc(0% - 130px);
+  background-repeat: no-repeat;
+  -webkit-animation: lower-intro1 3s forwards;
+          animation: lower-intro1 3s forwards;
+}
+
 .text-prompt {
   border: 7px solid #0c1445ff;
   background: #e3e2c4ff;
@@ -172,6 +213,106 @@
   display: none;
 }
 
+@-webkit-keyframes upper-intro1 {
+  0% {
+    -webkit-filter: hue-rotate(0);
+            filter: hue-rotate(0);
+    background-image: url("x.svg");
+  }
+  50% {
+    -webkit-filter: hue-rotate(180deg);
+            filter: hue-rotate(180deg);
+    background-image: url("x.svg");
+  }
+  75% {
+    background-image: url("o.svg");
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    -webkit-filter: hue-rotate(360deg);
+            filter: hue-rotate(360deg);
+    -webkit-transform: translateY(-50vh);
+            transform: translateY(-50vh);
+    background-image: url("o.svg");
+  }
+}
+
+@keyframes upper-intro1 {
+  0% {
+    -webkit-filter: hue-rotate(0);
+            filter: hue-rotate(0);
+    background-image: url("x.svg");
+  }
+  50% {
+    -webkit-filter: hue-rotate(180deg);
+            filter: hue-rotate(180deg);
+    background-image: url("x.svg");
+  }
+  75% {
+    background-image: url("o.svg");
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    -webkit-filter: hue-rotate(360deg);
+            filter: hue-rotate(360deg);
+    -webkit-transform: translateY(-50vh);
+            transform: translateY(-50vh);
+    background-image: url("o.svg");
+  }
+}
+
+@-webkit-keyframes lower-intro1 {
+  0% {
+    -webkit-filter: hue-rotate(0);
+            filter: hue-rotate(0);
+    background-image: url("x.svg");
+  }
+  50% {
+    -webkit-filter: hue-rotate(180deg);
+            filter: hue-rotate(180deg);
+    background-image: url("x.svg");
+  }
+  75% {
+    background-image: url("o.svg");
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    -webkit-filter: hue-rotate(360deg);
+            filter: hue-rotate(360deg);
+    -webkit-transform: translateY(50vh);
+            transform: translateY(50vh);
+    background-image: url("o.svg");
+  }
+}
+
+@keyframes lower-intro1 {
+  0% {
+    -webkit-filter: hue-rotate(0);
+            filter: hue-rotate(0);
+    background-image: url("x.svg");
+  }
+  50% {
+    -webkit-filter: hue-rotate(180deg);
+            filter: hue-rotate(180deg);
+    background-image: url("x.svg");
+  }
+  75% {
+    background-image: url("o.svg");
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    -webkit-filter: hue-rotate(360deg);
+            filter: hue-rotate(360deg);
+    -webkit-transform: translateY(50vh);
+            transform: translateY(50vh);
+    background-image: url("o.svg");
+  }
+}
+
 @-webkit-keyframes color-cycle {
   0% {
     background-color: inherit;
@@ -180,7 +321,7 @@
     background-color: #9ea9edff;
   }
   100% {
-    background-color: initial;
+    background-color: inherit;
   }
 }
 
@@ -192,7 +333,7 @@
     background-color: #9ea9edff;
   }
   100% {
-    background-color: initial;
+    background-color: inherit;
   }
 }
 /*# sourceMappingURL=style.css.map */

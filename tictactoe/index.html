@@ -44,8 +44,17 @@
       id="battle"
       preload="auto"
     ></audio>
+    <audio
+      src="assets/audio/draw.mp3"
+      class="music"
+      id="draw-music"
+      preload="auto"
+    ></audio>
     <div class="text-prompt hide"></div>
-
+    <!-- <div id="battle-intro-div" class="">
+      <div class="blocker" id="upper-b"></div>
+      <div class="blocker" id="lower-b"></div>
+    </div> -->
     <div id="main">
       <h1>TIC TAC TOE</h1>
       <div class="game-area">
@@ -78,7 +87,7 @@
       </div>
 
       <div class="settings-container">
-        <input type="checkbox" name="music-vol" id="music-vol" />
+        <input type="checkbox" name="music-vol" id="music-vol" checked="true" />
         <label id="music-lbl" for="music-vol"
           ><img
             id="music-img"
@@ -86,7 +95,7 @@
             alt=""
             style="height: 100%"
         /></label>
-        <input type="checkbox" name="sfx-vol" id="sfx-vol" />
+        <input type="checkbox" name="sfx-vol" id="sfx-vol" checked="true" />
         <label id="sfx-lbl" for="sfx-vol"
           ><img
             id="sfx-img"

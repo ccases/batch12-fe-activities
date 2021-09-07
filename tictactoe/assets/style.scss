@@ -23,6 +23,9 @@ $win-bg-color: #9ea9edff;
   background-repeat: no-repeat;
 }
 
+body {
+  overflow: hidden;
+}
 #main {
   height: 100vh;
   display: flex;
@@ -33,7 +36,7 @@ $win-bg-color: #9ea9edff;
   background-position: center;
   background-repeat: no-repeat;
 
-  padding-bottom: 200px;
+  padding-bottom: 100px;
   h1 {
     text-align: center;
     color: $light-text-color;
@@ -92,7 +95,7 @@ $win-bg-color: #9ea9edff;
     border: none;
   }
   .reset {
-    color: $dark-text-color;
+    color: $light-text-color;
     margin: 5px;
     &:hover {
       border: 5px solid $border-color;
@@ -119,6 +122,41 @@ $win-bg-color: #9ea9edff;
   }
 }
 
+#battle-intro-div {
+  height: 100vh;
+  position: absolute;
+  float: top;
+  background: none;
+  z-index: 99;
+  .blocker {
+    background-color: black;
+  }
+  #upper-b {
+    position: absolute;
+    top: 0px;
+    width: 100vw;
+    height: 50vh;
+    background-image: url("x.svg");
+    background-position-x: 50%;
+    background-position-y: calc(100% + 130px);
+    background-repeat: no-repeat;
+
+    animation: upper-intro1 3s forwards;
+  }
+  #lower-b {
+    position: absolute;
+    bottom: 0px;
+    width: 100vw;
+    height: 50vh;
+
+    background-position-x: 50%;
+    background-position-y: calc(0% - 130px);
+    background-repeat: no-repeat;
+
+    animation: lower-intro1 3s forwards;
+  }
+}
+
 .text-prompt {
   border: 7px solid $border-color;
   background: $prompt-bg-color;
@@ -140,6 +178,45 @@ $win-bg-color: #9ea9edff;
   display: none;
 }
 
+@keyframes upper-intro1 {
+  0% {
+    filter: hue-rotate(0);
+    background-image: url("x.svg");
+  }
+  50% {
+    filter: hue-rotate(180deg);
+    background-image: url("x.svg");
+  }
+  75% {
+    background-image: url("o.svg");
+    transform: translateY(0);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+    transform: translateY(0 - 50vh);
+    background-image: url("o.svg");
+  }
+}
+@keyframes lower-intro1 {
+  0% {
+    filter: hue-rotate(0);
+    background-image: url("x.svg");
+  }
+  50% {
+    filter: hue-rotate(180deg);
+    background-image: url("x.svg");
+  }
+  75% {
+    background-image: url("o.svg");
+    transform: translateY(0);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+    transform: translateY(0 + 50vh);
+    background-image: url("o.svg");
+  }
+}
+
 @keyframes color-cycle {
   0% {
     background-color: inherit;
@@ -148,6 +225,6 @@ $win-bg-color: #9ea9edff;
     background-color: $win-bg-color;
   }
   100% {
-    background-color: initial;
+    background-color: inherit;
   }
 }
