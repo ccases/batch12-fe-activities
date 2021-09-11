@@ -16,6 +16,7 @@
     <title>ccases.main</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <link rel="stylesheet" href="assets/style.css" />
   </head>
   <body>
@@ -25,24 +26,34 @@
         <a href="#">upgrade your browser</a> to improve your experience.
       </p>
     <![endif]-->
+    <canvas id="bg-canvas"></canvas>
     <div id="main">
       <div class="nav-bar">
-        <div id="logo"></div>
+        <!-- put an image here instead of a div -->
+        <div id="logo">logo</div>
+        <img src="assets/home.svg" alt="" style="width: 40px" />
       </div>
-      <div id="name-div">
-        <p class="particles" id="greeting" class="xl-text">Hi! I'm Carlos</p>
-        <p class="m-text">
-          I'm an aspiring full-stack developer. Click the button below to
-          download my resume. You can also reach me through other channels in
-          the icons listed below!
-        </p>
-        <a class="text-btn" href="">Download resume</a>
-        <div id="channel-icons">
-          <a class="icon-btn" href=""></a>
+      <div class="nav-bar-blocker"></div>
+      <section id="home">
+        <div class="container">
+          <p class="particles xl-text" id="greeting">Hi! I'm Carlos</p>
+          <p class="m-text" id="description">
+            I'm an aspiring full-stack developer. Click the button below to
+            download my resume. You can also reach me through other channels in
+            the icons listed below!
+          </p>
+          <div class="link-container">
+            <img src="assets/download.svg" alt="" style="height: 2em" />
+            <a class="text-btn" href="">Resume</a>
+          </div>
+          <div id="channel-icons">
+            <a class="icon-btn" href=""></a>
+          </div>
         </div>
-      </div>
-      <div id="portfolio-div">
-        <div class="link-div">
+      </section>
+      <section class="link-section">
+        <div class="container">
+          <canvas class="img-canvas"></canvas>
           <a
             class="portfolio-link"
             href="https://ccases.github.io/batch12-fe-activities/tribute-page/index.html"
@@ -50,7 +61,10 @@
             >Tribute page</a
           >
         </div>
-        <div class="link-div">
+      </section>
+      <section class="link-section">
+        <div class="container">
+          <canvas class="img-canvas"></canvas>
           <a
             class="portfolio-link"
             href="https://ccases.github.io/batch12-fe-activities/survey-form/index.html"
@@ -58,7 +72,10 @@
             >Survey form</a
           >
         </div>
-        <div class="link-div">
+      </section>
+      <section class="link-section">
+        <div class="container">
+          <canvas class="img-canvas"></canvas>
           <a
             class="portfolio-link"
             href="https://ccases.github.io/batch12-fe-activities/chess-board/flexboard.html"
@@ -66,7 +83,10 @@
             >Flex board</a
           >
         </div>
-        <div class="link-div">
+      </section>
+      <section class="link-section">
+        <div class="container">
+          <canvas class="img-canvas"></canvas>
           <a
             class="portfolio-link"
             href="https://ccases.github.io/batch12-fe-activities/chess-board/gridboard.html"
@@ -74,7 +94,10 @@
             >Grid board</a
           >
         </div>
-        <div class="link-div">
+      </section>
+      <section class="link-section">
+        <div class="container">
+          <canvas class="img-canvas"></canvas>
           <a
             class="portfolio-link"
             href="https://ccases.github.io/batch12-fe-activities/landing-page/index.html"
@@ -82,7 +105,10 @@
             >Landing Page</a
           >
         </div>
-        <div class="link-div">
+      </section>
+      <section class="link-section">
+        <div class="container">
+          <canvas class="img-canvas"></canvas>
           <a
             class="portfolio-link"
             href="https://ccases.github.io/batch12-fe-activities/momentum-app/index.html"
@@ -90,7 +116,18 @@
             >Momentum</a
           >
         </div>
-      </div>
+      </section>
+      <section class="link-section">
+        <div class="container">
+          <canvas class="img-canvas"></canvas>
+          <a
+            class="portfolio-link"
+            href="https://ccases.github.io/batch12-fe-activities/tictactoe/index.html"
+            id="tictactoe"
+            >Tic Tac Toe</a
+          >
+        </div>
+      </section>
     </div>
     <script src="assets/js/script.js" async defer></script>
   </body>
