@@ -1,3 +1,7 @@
+"use strict";
+import { Particle } from "./Particles.js";
+import { getDistance, randomInRange, randomIntInRange } from "./CustomMaths.js";
+
 let canvas = document.getElementById("bg-canvas");
 const ctx = canvas.getContext("2d");
 
@@ -8,7 +12,6 @@ let imgParticles = [];
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-ctx.strokeStyle = "black";
 let particleArray = [];
 
 let mouse = {
@@ -27,117 +30,6 @@ window.addEventListener("resize", (e) => {
   canvas.height = window.innerHeight;
 });
 
-function randomIntInRange(a, b) {
-  return Math.floor(Math.random() * (b - a)) + a;
-}
-function randomInRange(a, b) {
-  return Math.random() * (b - a) + a;
-}
-function getDistance(x1, y1, x2, y2) {
-  return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-}
-
-class Particle {
-  constructor(x, y) {
-    this.x = x;
-    this.y = y;
-    this.size = randomInRange(1, 3);
-    this.mass = this.size * 2;
-
-    this.accX = 0;
-    this.accY = 0;
-
-    this.baseVelX = randomInRange(-1, 1);
-    this.baseVelY = randomInRange(-1, 1);
-
-    this.velX = this.baseVelX;
-    this.velY = this.baseVelY;
-
-    this.opacity = 0;
-
-    this.targetX = null;
-    this.targetY = null;
-
-    this.fillColor = null;
-  }
-  setTarget(x, y) {
-    this.targetX = x;
-    this.targetY = y;
-  }
-  seekTarget() {
-    if (this.targetX && this.targetY) {
-      let dx = this.targetX - this.x;
-      let dy = this.targetY - this.y;
-    }
-    return; // do nothing if no target set
-  }
-  draw() {
-    if (this.fillColor) ctx.fillStyle = this.fillColor;
-    else ctx.fillStyle = "rgba(195, 134, 250, " + this.opacity + ")";
-    // c386fbff;
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    ctx.closePath();
-    ctx.fill();
-  }
-  update() {
-    this.velX += this.accX;
-    this.velY += this.accY;
-    this.x += this.velX;
-    this.y += this.velY;
-
-    this.accX = 0;
-    this.accY = 0;
-
-    this.opacity += 0.01;
-    if (this.opacity >= 1) this.opacity = 1;
-  }
-  isOutsideCanvas() {
-    if (
-      this.x > canvas.width ||
-      this.x < 0 ||
-      this.y > canvas.height ||
-      this.y < 0
-    ) {
-      return true;
-    }
-    return false;
-  }
-  reinitializeTo(x, y) {
-    this.x = x;
-    this.y = y;
-    this.baseVelX = randomInRange(-1, 1);
-    this.baseVelY = randomInRange(-1, 1);
-    this.velX = this.baseVelX;
-    this.velY = this.baseVelY;
-    this.opacity = 0;
-  }
-  applyForce(accX, accY) {
-    this.accX = accX;
-    this.accY = accY;
-  }
-  fleeFromMouse() {
-    let d = getDistance(mouse.x, mouse.y, this.x, this.y);
-    if (d < mouse.radius) {
-      this.applyForce(
-        -(mouse.x - this.x) / (d * 2 * this.mass),
-        -(mouse.y - this.y) / (d * 2 * this.mass)
-      );
-    } else {
-      if (this.velX > this.baseVelX) {
-        this.accX -= 0.01 * this.mass;
-      } else {
-        this.accX += 0.01 * this.mass;
-      }
-      if (this.velY > this.baseVelY) {
-        this.accY -= 0.01 * this.mass;
-      } else {
-        this.accY += 0.01 * this.mass;
-      }
-    }
-  }
-}
-
 function connectParticles() {
   let maxD = 80;
 
@@ -148,7 +40,7 @@ function connectParticles() {
       let y1 = particleArray[i].y;
       let y2 = particleArray[j].y;
 
-      d = getDistance(x1, y1, x2, y2);
+      let d = getDistance(x1, y1, x2, y2);
       if (d < maxD) {
         let op = ((maxD - d) / maxD) * 0.5;
 
@@ -225,6 +117,6 @@ function animateBgParticles() {
         Math.random() * canvas.height
       );
     }
-    p.fleeFromMouse();
+    p.fleeFrom(mouse);
   }
 }
