@@ -36,6 +36,7 @@ $gray-5: #495054ff;
   position: relative;
   // width: 100vw;
   section {
+    min-height: 600px;
     height: 100vh;
     //   width: 100px;
   }
@@ -81,13 +82,23 @@ $gray-5: #495054ff;
 
   .link-section {
     .container {
-      height: 100%;
+      height: clamp(600px, 100vh, 100vh);
       margin: 0 20px 0 80px;
       display: flex;
       flex-flow: column;
 
-      .img-canvas {
-        max-height: 50vh;
+      .canvas-div {
+        width: clamp(300px, 80%, 1000px);
+        height: clamp(300px, 50%, 1000px);
+
+        .img-canvas {
+          border: 3px solid #ffffff;
+          // max-width: 100%;
+          // height: 100%;
+        }
+      }
+      .c-img {
+        display: none;
       }
     }
   }

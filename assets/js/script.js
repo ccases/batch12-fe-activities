@@ -1,11 +1,17 @@
 "use strict";
 import { Particle } from "./Particles.js";
-import { getDistance, randomInRange, randomIntInRange } from "./CustomMaths.js";
+import {
+  getDistance,
+  randomInRange,
+  randomIntInRange,
+  clamp,
+} from "./CustomMaths.js";
 
 let canvas = document.getElementById("bg-canvas");
 const ctx = canvas.getContext("2d");
 
 let canvasImg = document.getElementsByClassName("img-canvas");
+let canvasDiv = document.getElementsByClassName("canvas-div");
 let ctxImg = [];
 let imgParticles = [];
 
@@ -28,6 +34,14 @@ window.addEventListener("mousemove", (e) => {
 window.addEventListener("resize", (e) => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
+
+  for (let i = 0; i < canvasImg.length; i++) {
+    let c = canvasImg[i];
+    let d = canvasDiv[i];
+
+    c.width = d.clientWidth;
+    c.height = d.clientHeight;
+  }
 });
 
 function connectParticles() {
@@ -35,10 +49,10 @@ function connectParticles() {
 
   for (let i = 0; i < particleArray.length; i++) {
     for (let j = i + 1; j < particleArray.length; j++) {
-      let x1 = particleArray[i].x;
-      let x2 = particleArray[j].x;
-      let y1 = particleArray[i].y;
-      let y2 = particleArray[j].y;
+      let x1 = particleArray[i].pos.x;
+      let x2 = particleArray[j].pos.x;
+      let y1 = particleArray[i].pos.y;
+      let y2 = particleArray[j].pos.y;
 
       let d = getDistance(x1, y1, x2, y2);
       if (d < maxD) {
@@ -65,39 +79,69 @@ function initBgParticles() {
 }
 
 //initialize canvas imgs
+function initCanvasImg() {
+  let i = 0;
+  for (let c of canvasImg) {
+    c.width = clamp(300, 0.8 * window.innerWidth, 1000);
+    c.height = clamp(300, 0.5 * window.innerHeight, 1000);
+
+    ctxImg.push(c.getContext("2d"));
+    ctxImg[ctxImg.length - 1].fillStyle = "rgba(100, 0, 0, 1)";
+    ctxImg[ctxImg.length - 1].fillRect(0, 0, c.width, c.height);
+  }
+}
+
 function initImgParticles() {
   for (let c of canvasImg) {
-    ctxImg.push(c.getContext("2d"));
     let smallArr = [];
+
     for (let i = 0; i < 4; i++) {
       // create 4 particles for each corner of img
-      let p = new Particle(c.height / 2, c.width / 2);
+      let p = new Particle(c.width / 2, c.height / 2, c);
+      p.size = 5;
       smallArr.push(p);
-      p.fillColor = "rgba(255, 0, 0, 1)";
+      p.fillColor = "rgba(255, 255, 0, 1)";
+      p.setVel(0, 0);
     }
+
     imgParticles.push(smallArr);
   }
 }
 
-function initCtxImg() {
-  for (let c of canvasImg) {
-    ctxImg.push(c.getContext("2d"));
-    ctxImg[0].fillStyle = "rgba(0, 0, 0, 1)";
-    ctxImg[0].fillRect(0, 0, c.width, c.height);
-  }
+function connect2(p1, p2, ctx) {
+  ctx.strokeStyle = `rgba(150, 150, 244, 1)`;
+  ctx.linewidth = 0.5;
+  ctx.beginPath();
+  ctx.moveTo(p1.pos.x, p1.pos.y);
+  ctx.lineTo(p2.pos.x, p2.pos.y);
+  ctx.stroke();
 }
 
+initCanvasImg();
 initImgParticles();
 initBgParticles();
+
+// setInterval(function () {
+//   console.log(imgParticles[1][0].acc.x, imgParticles[1][0].acc.y);
+// }, 1000);
 
 function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   for (let i = 0; i < ctxImg.length; i++) {
-    imgParticles[i].forEach((p) => {
-      p.draw();
-      p.update();
+    ctxImg[i].clearRect(0, 0, canvasImg[i].width, canvasImg[i].height);
+    imgParticles[i].forEach((particle) => {
+      particle.update();
+      particle.draw();
     });
+    imgParticles[i][0].seek(10, 10);
+    imgParticles[i][1].seek(canvasImg[i].width - 10, 10);
+    imgParticles[i][2].seek(canvasImg[i].width - 10, canvasImg[i].height - 10);
+    imgParticles[i][3].seek(10, canvasImg[i].height - 10);
+    for (let j = 0; j < 3; j++) {
+      connect2(imgParticles[i][j], imgParticles[i][j + 1], ctxImg[i]);
+    }
+    connect2(imgParticles[i][0], imgParticles[i][3], ctxImg[i]);
   }
   animateBgParticles();
   connectParticles();
@@ -110,7 +154,6 @@ function animateBgParticles() {
   for (let p of particleArray) {
     p.update();
     p.draw();
-    // console.log(p);
     if (p.isOutsideCanvas()) {
       p.reinitializeTo(
         Math.random() * canvas.width,

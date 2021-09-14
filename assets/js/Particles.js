@@ -1,104 +1,133 @@
+import * as CMath from "./CustomMaths.js";
+
 export class Particle {
   constructor(x, y, canvas = document.getElementById("bg-canvas")) {
-    this.x = x;
-    this.y = y;
+    this.pos = CMath.createVector(x, y);
+
     this.size = randomInRange(1, 3);
     this.mass = this.size * 2;
 
     this.canvas = canvas;
     this.ctx = canvas.getContext("2d");
 
-    this.accX = 0;
-    this.accY = 0;
+    this.acc = CMath.createVector(0, 0);
+    // this.accX = 0;
+    // this.accY = 0;
+    this.maxForce = 0.4;
 
-    this.baseVelX = randomInRange(-1, 1);
-    this.baseVelY = randomInRange(-1, 1);
+    this.baseVel = CMath.createVector(
+      randomInRange(-1, 1),
+      randomInRange(-1, 1)
+    );
 
-    this.velX = this.baseVelX;
-    this.velY = this.baseVelY;
+    this.vel = CMath.createVector(this.baseVel.x, this.baseVel.y);
+    this.maxVel = 6;
 
     this.opacity = 0;
 
-    this.targetX = null;
-    this.targetY = null;
-
     this.fillColor = null;
   }
-  setTarget(x, y) {
-    this.targetX = x;
-    this.targetY = y;
+
+  setVel(x, y) {
+    this.baseVel.x = x;
+    this.baseVel.y = y;
+
+    this.vel.x = x;
+    this.vel.y = y;
   }
-  seekTarget() {
-    if (this.targetX && this.targetY) {
-      let dx = this.targetX - this.x;
-      let dy = this.targetY - this.y;
+  seek(x, y) {
+    let force = CMath.createVector(x, y);
+    force = force.sub(this.pos);
+    let desiredSpeed = this.maxVel;
+    let slowDistance = 100;
+    let distance = getDistance(this.pos.x, this.pos.y, x, y);
+    // console.log(distance);
+    // if (distance < 100 || distance > -100) {
+    //   this.applyForce(new CMath.createVector(0, 0));
+    //   console.log("true");
+    //   return;
+    // }
+    if (distance < slowDistance) {
+      desiredSpeed = CMath.map(distance, 0, slowDistance, 0, this.maxVel);
     }
-    return; // do nothing if no target set
+    force.setMag(desiredSpeed);
+    force.sub(this.vel);
+    force.limit(this.maxForce);
+    this.applyForce(force);
+    return force;
   }
   draw() {
     if (this.fillColor) this.ctx.fillStyle = this.fillColor;
     else this.ctx.fillStyle = "rgba(195, 134, 250, " + this.opacity + ")";
-    // c386fbff;
     this.ctx.beginPath();
-    this.ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    this.ctx.arc(this.pos.x, this.pos.y, this.size, 0, Math.PI * 2);
     this.ctx.closePath();
     this.ctx.fill();
   }
   update() {
-    this.velX += this.accX;
-    this.velY += this.accY;
-    this.x += this.velX;
-    this.y += this.velY;
-
-    this.accX = 0;
-    this.accY = 0;
+    // this.vel.x = CMath.limitMax(this.vel.x + this.acc.x, this.maxVel);
+    // this.vel.y = CMath.limitMax(this.vel.y + this.acc.y, this.maxVel);
+    this.vel.add(this.acc);
+    this.vel.limit(this.maxVel);
+    this.pos.add(this.vel);
+    this.acc.set(0, 0);
 
     this.opacity += 0.01;
     if (this.opacity >= 1) this.opacity = 1;
   }
   isOutsideCanvas() {
     if (
-      this.x > this.canvas.width ||
-      this.x < 0 ||
-      this.y > this.canvas.height ||
-      this.y < 0
+      this.pos.x > this.canvas.width ||
+      this.pos.x < 0 ||
+      this.pos.y > this.canvas.height ||
+      this.pos.y < 0
     ) {
       return true;
     }
     return false;
   }
   reinitializeTo(x, y) {
-    this.x = x;
-    this.y = y;
-    this.baseVelX = randomInRange(-1, 1);
-    this.baseVelY = randomInRange(-1, 1);
-    this.velX = this.baseVelX;
-    this.velY = this.baseVelY;
+    this.pos.x = x;
+    this.pos.y = y;
+    this.baseVel.x = randomInRange(-1, 1);
+    this.baseVel.y = randomInRange(-1, 1);
+    this.vel.x = this.baseVel.x;
+    this.vel.y = this.baseVel.y;
     this.opacity = 0;
   }
-  applyForce(accX, accY) {
-    this.accX = accX;
-    this.accY = accY;
+  applyForce(force) {
+    this.acc.set(force.x, force.y);
   }
-  fleeFrom(mouse) {
-    let d = getDistance(mouse.x, mouse.y, this.x, this.y);
-    if (d < mouse.radius) {
+  fleeFrom(target) {
+    let d = getDistance(target.x, target.y, this.pos.x, this.pos.y);
+    if (d < target.radius) {
       this.applyForce(
-        -(mouse.x - this.x) / (d * 2 * this.mass),
-        -(mouse.y - this.y) / (d * 2 * this.mass)
+        // apply a negative vector to particle
+        CMath.createVector(
+          -(target.x - this.pos.x) / (d * 2 * this.mass + 1),
+          -(target.y - this.pos.y) / (d * 2 * this.mass + 1)
+        )
       );
     } else {
-      if (this.velX > this.baseVelX) {
-        this.accX -= 0.01 * this.mass;
+      // this.applyForce(this.baseVel.sub(this.vel));
+      if (this.vel.x > this.baseVel.x) {
+        this.acc.x -= 0.01 * this.mass;
       } else {
-        this.accX += 0.01 * this.mass;
+        this.acc.x += 0.01 * this.mass;
       }
-      if (this.velY > this.baseVelY) {
-        this.accY -= 0.01 * this.mass;
+      if (this.vel.y > this.baseVel.y) {
+        this.acc.y -= 0.01 * this.mass;
       } else {
-        this.accY += 0.01 * this.mass;
+        this.acc.y += 0.01 * this.mass;
       }
     }
+  }
+  changeColor(hexColor) {}
+  drawCircle(x, y, rad) {
+    this.ctx.beginPath();
+    this.ctx.arc(x, y, rad, 0, Math.PI * 2);
+    this.ctx.closePath();
+    this.ctx.fill();
   }
 }
 

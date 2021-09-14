@@ -20,6 +20,7 @@
 }
 
 #main section {
+  min-height: 600px;
   height: 100vh;
 }
 
@@ -78,7 +79,7 @@
 }
 
 #main .link-section .container {
-  height: 100%;
+  height: clamp(600px, 100vh, 100vh);
   margin: 0 20px 0 80px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -89,8 +90,17 @@
           flex-flow: column;
 }
 
-#main .link-section .container .img-canvas {
-  max-height: 50vh;
+#main .link-section .container .canvas-div {
+  width: clamp(300px, 80%, 1000px);
+  height: clamp(300px, 50%, 1000px);
+}
+
+#main .link-section .container .canvas-div .img-canvas {
+  border: 3px solid #ffffff;
+}
+
+#main .link-section .container .c-img {
+  display: none;
 }
 
 .nav-bar {
