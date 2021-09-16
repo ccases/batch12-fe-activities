@@ -23,6 +23,7 @@ $gray-5: #495054ff;
   // available weights: 400, 600
   scrollbar-color: $dark-color $light-color;
   scrollbar-width: auto;
+  scroll-behavior: smooth;
 }
 #bg-canvas {
   display: block;
@@ -86,24 +87,87 @@ $gray-5: #495054ff;
       margin: 0 20px 0 80px;
       display: flex;
       flex-flow: column;
-
+      // justify-content: center;
+      align-items: center;
       .canvas-div {
         width: clamp(300px, 80%, 1000px);
         height: clamp(300px, 50%, 1000px);
 
-        .img-canvas {
-          border: 3px solid #ffffff;
-          // max-width: 100%;
-          // height: 100%;
+        .img-container {
+          height: 0;
+          width: 0;
+          transform: scale(0);
+          padding: 0;
+          transition: all 0.4s;
+          display: grid;
+          place-items: center;
+          border: 2px solid #ffffff66;
+          object-fit: contain;
+          background: #23232366;
+
+          .c-img {
+            // image mismo
+            max-width: 100%;
+            max-height: 100%;
+            height: auto;
+            place-self: center;
+          }
+        }
+        .give-height {
+          padding-top: 10px;
+          padding-bottom: 10px;
+          transform: scaleY(1);
+          height: 100%;
+        }
+        .give-width {
+          padding-left: 10px;
+          padding-right: 10px;
+          transform: scaleX(1);
+          width: 100%;
+        }
+        .hide {
+          opacity: 0;
+        }
+        .flicker {
+          animation: wave-opacity 2s infinite;
         }
       }
-      .c-img {
-        display: none;
+
+      .portfolio-link {
+        text-decoration: none;
+        color: $gray-2;
+        font-size: $l-font;
+        font-weight: $heavy-font;
+        margin-top: 50px;
+        transition: all 0.3s;
+        &:hover {
+          color: white;
+          text-decoration: underline;
+        }
       }
     }
   }
 }
-
+@keyframes wave-opacity {
+  0% {
+    opacity: 0.3;
+  }
+  10% {
+    opacity: 0.5;
+  }
+  40% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  70% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
 .nav-bar {
   display: flex;
   flex-flow: column nowrap;
@@ -122,6 +186,7 @@ $gray-5: #495054ff;
 
   + .nav-bar-blocker {
     display: inline;
+    background-color: black;
     opacity: 0.5;
   }
 }
@@ -133,6 +198,7 @@ $gray-5: #495054ff;
   transition: opacity 0.5s;
 }
 // (calc (-300px - 60px)
+
 .l-text {
   font-size: $l-font;
 }

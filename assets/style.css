@@ -4,6 +4,7 @@
   font-family: "Montserrat", sans-serif;
   scrollbar-color: #005b49 #ffebcd;
   scrollbar-width: auto;
+  scroll-behavior: smooth;
 }
 
 #bg-canvas {
@@ -88,6 +89,9 @@
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
           flex-flow: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 #main .link-section .container .canvas-div {
@@ -95,12 +99,110 @@
   height: clamp(300px, 50%, 1000px);
 }
 
-#main .link-section .container .canvas-div .img-canvas {
-  border: 3px solid #ffffff;
+#main .link-section .container .canvas-div .img-container {
+  height: 0;
+  width: 0;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  padding: 0;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  border: 2px solid #ffffff66;
+  -o-object-fit: contain;
+     object-fit: contain;
+  background: #23232366;
 }
 
-#main .link-section .container .c-img {
-  display: none;
+#main .link-section .container .canvas-div .img-container .c-img {
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  place-self: center;
+}
+
+#main .link-section .container .canvas-div .give-height {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  -webkit-transform: scaleY(1);
+          transform: scaleY(1);
+  height: 100%;
+}
+
+#main .link-section .container .canvas-div .give-width {
+  padding-left: 10px;
+  padding-right: 10px;
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+  width: 100%;
+}
+
+#main .link-section .container .canvas-div .hide {
+  opacity: 0;
+}
+
+#main .link-section .container .canvas-div .flicker {
+  -webkit-animation: wave-opacity 2s infinite;
+          animation: wave-opacity 2s infinite;
+}
+
+#main .link-section .container .portfolio-link {
+  text-decoration: none;
+  color: #bccad0ff;
+  font-size: 2em;
+  font-weight: 600;
+  margin-top: 50px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#main .link-section .container .portfolio-link:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+@-webkit-keyframes wave-opacity {
+  0% {
+    opacity: 0.3;
+  }
+  10% {
+    opacity: 0.5;
+  }
+  40% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  70% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+
+@keyframes wave-opacity {
+  0% {
+    opacity: 0.3;
+  }
+  10% {
+    opacity: 0.5;
+  }
+  40% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  70% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0.2;
+  }
 }
 
 .nav-bar {
@@ -132,6 +234,7 @@
 
 .nav-bar + .nav-bar-blocker {
   display: inline;
+  background-color: black;
   opacity: 0.5;
 }
 

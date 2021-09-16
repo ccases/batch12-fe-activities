@@ -11,8 +11,6 @@ export class Particle {
     this.ctx = canvas.getContext("2d");
 
     this.acc = CMath.createVector(0, 0);
-    // this.accX = 0;
-    // this.accY = 0;
     this.maxForce = 0.4;
 
     this.baseVel = CMath.createVector(
@@ -41,12 +39,6 @@ export class Particle {
     let desiredSpeed = this.maxVel;
     let slowDistance = 100;
     let distance = getDistance(this.pos.x, this.pos.y, x, y);
-    // console.log(distance);
-    // if (distance < 100 || distance > -100) {
-    //   this.applyForce(new CMath.createVector(0, 0));
-    //   console.log("true");
-    //   return;
-    // }
     if (distance < slowDistance) {
       desiredSpeed = CMath.map(distance, 0, slowDistance, 0, this.maxVel);
     }
@@ -65,8 +57,6 @@ export class Particle {
     this.ctx.fill();
   }
   update() {
-    // this.vel.x = CMath.limitMax(this.vel.x + this.acc.x, this.maxVel);
-    // this.vel.y = CMath.limitMax(this.vel.y + this.acc.y, this.maxVel);
     this.vel.add(this.acc);
     this.vel.limit(this.maxVel);
     this.pos.add(this.vel);

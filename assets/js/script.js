@@ -12,6 +12,8 @@ const ctx = canvas.getContext("2d");
 
 let canvasImg = document.getElementsByClassName("img-canvas");
 let canvasDiv = document.getElementsByClassName("canvas-div");
+let imgDivs = document.getElementsByClassName("img-container");
+let images = document.getElementsByClassName("c-img");
 let ctxImg = [];
 let imgParticles = [];
 
@@ -26,6 +28,72 @@ let mouse = {
   mScroll: null,
   radius: 80,
 };
+
+const holoObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        showHolo(entry.target);
+      } else {
+        hideHolo(entry.target);
+      }
+    });
+  },
+  { rootMargin: "0px 0px -200px 0px" }
+);
+
+function initCanvasDivs() {
+  for (let imgDiv of imgDivs) {
+    holoObserver.observe(imgDiv);
+    imgDiv.isAnimating = false; // attach a new key
+  }
+}
+
+function hideHolo(imgDiv) {
+  if (imgDiv.isAnimating) {
+    setTimeout(function () {
+      hideHolo(imgDiv);
+    }, 200);
+    return;
+  }
+
+  let img = imgDiv.lastElementChild;
+
+  imgDiv.isAnimating = true;
+
+  if (!img.classList.contains("hide")) img.classList.add("hide");
+  img.classList.remove("flicker");
+  setTimeout(function () {
+    imgDiv.classList.remove("give-height");
+  }, 400);
+  setTimeout(function () {
+    imgDiv.classList.remove("give-width");
+    imgDiv.isAnimating = false;
+  }, 800);
+}
+function showHolo(imgDiv) {
+  if (imgDiv.isAnimating) {
+    setTimeout(function () {
+      showHolo(imgDiv);
+    }, 200);
+    return;
+  }
+
+  let img = imgDiv.lastElementChild;
+  imgDiv.isAnimating = true;
+
+  if (!imgDiv.classList.contains("give-width"))
+    imgDiv.classList.add("give-width");
+  if (!imgDiv.classList.contains("give-height"))
+    setTimeout(function () {
+      imgDiv.classList.add("give-height");
+    }, 400);
+  setTimeout(function () {
+    img.classList.add("flicker");
+    img.classList.remove("hide");
+    imgDiv.isAnimating = false;
+  }, 800);
+}
 
 window.addEventListener("mousemove", (e) => {
   mouse.x = e.x;
@@ -80,7 +148,6 @@ function initBgParticles() {
 
 //initialize canvas imgs
 function initCanvasImg() {
-  let i = 0;
   for (let c of canvasImg) {
     c.width = clamp(300, 0.8 * window.innerWidth, 1000);
     c.height = clamp(300, 0.5 * window.innerHeight, 1000);
@@ -88,6 +155,13 @@ function initCanvasImg() {
     ctxImg.push(c.getContext("2d"));
     ctxImg[ctxImg.length - 1].fillStyle = "rgba(100, 0, 0, 1)";
     ctxImg[ctxImg.length - 1].fillRect(0, 0, c.width, c.height);
+  }
+
+  for (let i = 0; i < ctxImg.length; i++) {
+    images[i].onload = function () {
+      ctxImg[i].drawImage(images[i], 10, 10);
+      console.log(images[i], ctxImg[i]);
+    };
   }
 }
 
@@ -117,6 +191,7 @@ function connect2(p1, p2, ctx) {
   ctx.stroke();
 }
 
+initCanvasDivs();
 initCanvasImg();
 initImgParticles();
 initBgParticles();
@@ -143,6 +218,7 @@ function animate() {
     }
     connect2(imgParticles[i][0], imgParticles[i][3], ctxImg[i]);
   }
+
   animateBgParticles();
   connectParticles();
   requestAnimationFrame(animate);
