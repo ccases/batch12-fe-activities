@@ -157,7 +157,7 @@ $img-hover-color: #853d8588;
   z-index: 20;
   position: fixed;
   top: 0;
-  display: grid;
+  display: none;
   height: 100%;
   width: 100%;
   place-items: center;
@@ -168,7 +168,7 @@ $img-hover-color: #853d8588;
     width: clamp(600px, 80vw, 1000px);
     height: clamp(600px, 80vh, 1000px);
 
-    .modal-img {
+    .modal-img-div {
       width: 50%;
       background-color: red;
     }
@@ -190,6 +190,9 @@ $img-hover-color: #853d8588;
         height: 100%;
         padding: 10px;
         overflow-y: auto;
+      }
+      .page-description {
+        white-space: pre-line;
       }
       .page-tools {
         color: rgba(0, 0, 0, 0.4);
@@ -223,7 +226,7 @@ $img-hover-color: #853d8588;
     .modal-container {
       flex-flow: column;
       margin: auto;
-      .modal-img {
+      .modal-img-div {
         height: 50%;
         background-color: blanchedalmond;
       }

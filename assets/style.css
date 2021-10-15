@@ -173,8 +173,7 @@
   z-index: 20;
   position: fixed;
   top: 0;
-  display: -ms-grid;
-  display: grid;
+  display: none;
   height: 100%;
   width: 100%;
   place-items: center;
@@ -193,7 +192,7 @@
   height: clamp(600px, 80vh, 1000px);
 }
 
-.modal .modal-container .modal-img {
+.modal .modal-container .modal-img-div {
   width: 50%;
   background-color: red;
 }
@@ -226,6 +225,10 @@
   height: 100%;
   padding: 10px;
   overflow-y: auto;
+}
+
+.modal .modal-container .modal-text .page-description {
+  white-space: pre-line;
 }
 
 .modal .modal-container .modal-text .page-tools {
@@ -265,7 +268,7 @@
             flex-flow: column;
     margin: auto;
   }
-  .modal .modal-container .modal-img {
+  .modal .modal-container .modal-img-div {
     height: 50%;
     background-color: blanchedalmond;
   }

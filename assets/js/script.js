@@ -6,6 +6,7 @@ import {
   randomIntInRange,
   clamp,
 } from "./CustomMaths.js";
+import { ModalContent } from "./Modal.js";
 
 const nParticles = 150;
 let canvas = document.getElementById("bg-canvas");
@@ -13,6 +14,72 @@ const ctx = canvas.getContext("2d");
 let imgContainers = document.getElementsByClassName("overlay");
 let ctxImg = [];
 let imgParticles = [];
+
+// MODAL CLICK AND CLOSE
+const modal = document.getElementsByClassName("modal")[0];
+const modalClose = document.getElementsByClassName("close-modal")[0];
+const modalImg = document.getElementsByClassName("modal-img")[0];
+const modalTitle = document.getElementsByClassName("page-title")[0];
+const modalContent = document.getElementsByClassName("page-description")[0];
+const modalTools = document.getElementsByClassName("page-tools")[0];
+
+function preloadImage(url) {
+  var img = new Image();
+  img.src = url;
+}
+
+for (let modal in ModalContent) {
+  preloadImage(modal.imgSrc);
+}
+
+function initImgContainers() {
+  Array.from(imgContainers).forEach((container) => {
+    container.addEventListener("mouseenter", (e) => {
+      container.classList.remove("hide");
+    });
+
+    container.addEventListener("mouseleave", (e) => {
+      if (!container.classList.contains("hide")) {
+        container.classList.add("hide");
+      }
+    });
+
+    container.addEventListener("click", (e) => {
+      let contId = e.target.firstElementChild.firstChild.data;
+      let key = "";
+      console.log(contId);
+      modal.style.display = "grid";
+      if (contId === "Tribute page") {
+        key = "tributePage";
+      } else if (contId === "Survey form") {
+        key = "surveyForm";
+      } else if (contId === "Chess") {
+        key = "chess";
+      } else if (contId === "Landing Page") {
+        key = "landingPage";
+      } else if (contId === "Momentum App") {
+        key = "momentum";
+      } else if (contId === "Tic Tac Toe") {
+        key = "tictactoe";
+      }
+
+      modalTitle.textContent = ModalContent[key].title;
+      modalContent.textContent = ModalContent[key].content;
+      modalTools.textContent = ModalContent[key].tools;
+      modalImg.setAttribute("src", ModalContent[key].imgSrc);
+    });
+  });
+}
+window.addEventListener("click", (e) => {
+  // add animation to close modal here
+  if (e.target == modal) {
+    modal.style.display = "none";
+  }
+});
+modalClose.addEventListener("click", (e) => {
+  // add animation to close modal here
+  modal.style.display = "none";
+});
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -34,20 +101,6 @@ window.addEventListener("resize", (e) => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 });
-
-function initImgContainers() {
-  Array.from(imgContainers).forEach((container) => {
-    container.addEventListener("mouseenter", (e) => {
-      container.classList.remove("hide");
-    });
-
-    container.addEventListener("mouseleave", (e) => {
-      if (!container.classList.contains("hide")) {
-        container.classList.add("hide");
-      }
-    });
-  });
-}
 
 function connectParticles() {
   let maxD = 80;
