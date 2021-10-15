@@ -1,0 +1,232 @@
+$text-main: #fffff1;
+$xl-font: 4em;
+$l-font: 2em;
+$m-font: 1.4em;
+$s-font: 0.5em;
+$heavy-font: 600;
+$regular-font: 400;
+$main-color: #d69a56;
+$sec-color: #9c6725;
+$light-color: #ffebcd;
+$dark-color: #005b49;
+
+$gray-1: #e3e8eaff;
+$gray-2: #bccad0ff;
+$gray-3: #9ba8aeff;
+$gray-4: #707a7eff;
+$gray-5: #495054ff;
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  // available weights: 400, 600
+  scrollbar-color: $dark-color $light-color;
+  scrollbar-width: auto;
+  scroll-behavior: smooth;
+}
+#bg-canvas {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  position: fixed;
+  background: #4e4e4e;
+}
+#main {
+  position: relative;
+  // width: 100vw;
+  section {
+    min-height: 600px;
+    height: 100vh;
+    //   width: 100px;
+  }
+
+  #home {
+    width: 100%;
+    display: grid;
+    place-items: center;
+    // background-color: $gray-4;
+    background-color: none;
+    .container {
+      padding: 0 20px 0 80px;
+      max-width: 700px;
+      #greeting {
+        color: $gray-1;
+        font-weight: $heavy-font;
+      }
+      #description {
+        color: white;
+      }
+      .xl-text {
+        font-size: 5em;
+      }
+    }
+    .link-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      background-color: $gray-3;
+      width: max-content;
+      padding: 5px 10px;
+      img {
+        margin: 0 5px 0 0;
+      }
+      a {
+        color: black;
+        font-size: 1.5em;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .link-section {
+    .container {
+      height: clamp(600px, 100vh, 100vh);
+      margin: 0 20px 0 80px;
+      display: flex;
+      flex-flow: column;
+      // justify-content: center;
+      align-items: center;
+      .canvas-div {
+        width: clamp(300px, 80%, 1000px);
+        height: clamp(300px, 50%, 1000px);
+
+        .img-container {
+          height: 0;
+          width: 0;
+          transform: scale(0);
+          padding: 0;
+          transition: all 0.4s;
+          display: grid;
+          place-items: center;
+          border: 2px solid #ffffff66;
+          object-fit: contain;
+          background: #23232366;
+
+          .c-img {
+            // image mismo
+            max-width: 100%;
+            max-height: 100%;
+            height: auto;
+            place-self: center;
+          }
+        }
+        .give-height {
+          padding-top: 10px;
+          padding-bottom: 10px;
+          transform: scaleY(1);
+          height: 100%;
+        }
+        .give-width {
+          padding-left: 10px;
+          padding-right: 10px;
+          transform: scaleX(1);
+          width: 100%;
+        }
+        .hide {
+          opacity: 0;
+        }
+        .flicker {
+          animation: wave-opacity 2s forwards;
+        }
+      }
+
+      .portfolio-link {
+        text-decoration: none;
+        color: $gray-2;
+        font-size: $l-font;
+        font-weight: $heavy-font;
+        margin-top: 50px;
+        transition: all 0.3s;
+        &:hover {
+          color: white;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+@keyframes wave-opacity {
+  0% {
+    opacity: 0.3;
+  }
+  10% {
+    opacity: 0.5;
+  }
+  40% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  70% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+.nav-bar {
+  display: flex;
+  flex-flow: column nowrap;
+  position: fixed;
+  left: 0;
+  height: 100vh;
+  width: 300px;
+  transform: translateX(-240px);
+  background-color: $gray-5;
+  transition: transform 0.5s;
+  z-index: 99;
+
+  &:hover {
+    transform: translateX(0px);
+  }
+
+  + .nav-bar-blocker {
+    display: inline;
+    background-color: black;
+    opacity: 0.5;
+  }
+}
+.nav-bar-blocker {
+  display: none;
+  opacity: 0;
+  z-index: 98;
+  background-color: black;
+  transition: opacity 0.5s;
+}
+// (calc (-300px - 60px)
+
+.l-text {
+  font-size: $l-font;
+}
+
+.m-text {
+  font-size: $m-font;
+}
+
+.s-text {
+  font-size: $s-font;
+}
+
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: $light-color;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $dark-color;
+  border-radius: 50%;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #00362c;
+}

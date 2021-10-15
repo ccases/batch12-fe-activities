@@ -28,8 +28,7 @@
     <![endif]-->
     <canvas id="bg-canvas"></canvas>
     <div id="main">
-      <div class="nav-bar">
-        <!-- put an image here instead of a div -->
+      <!-- <div class="nav-bar">
         <div id="logo">logo</div>
         <a href="#home"
           ><img src="assets/home.svg" alt="" style="width: 40px"
@@ -42,8 +41,9 @@
           <li><a href="#momentum">Momentum App</a></li>
           <li><a href="#tictactoe">Tic Tac Toe</a></li>
         </ul>
-      </div>
+      </div> -->
       <div class="nav-bar-blocker"></div>
+
       <section id="home">
         <div class="container">
           <p class="particles xl-text" id="greeting">Hi! I'm Carlos</p>
@@ -61,120 +61,144 @@
           </div>
         </div>
       </section>
-      <section class="link-section" id="tribute">
-        <div class="container">
-          <div class="canvas-div">
-            <div class="img-container">
-              <img
-                src="assets/tribute-page-prev.JPG"
-                alt=""
-                class="c-img hide"
-              />
+      <div class="modal">
+        <div class="modal-container">
+          <div class="modal-img"></div>
+          <div class="modal-text">
+            <p class="page-title">Tribute page</p>
+            <div class="modal-text-container">
+              <p class="page-description">
+                This is a placeholder for some text describing the page.
+              </p>
             </div>
-            <!-- <canvas class="img-canvas"></canvas> -->
+            <div class="page-tools">CSS, HTML</div>
+            <div class="close-modal">Back to main page</div>
           </div>
-          <a
-            class="portfolio-link"
-            href="https://ccases.github.io/batch12-fe-activities/tribute-page/index.html"
-            id="tribute-page"
-            target="_blank"
-            >Tribute page</a
-          >
         </div>
-      </section>
-      <section class="link-section" id="survey">
-        <div class="container">
-          <div class="canvas-div">
-            <div class="img-container">
-              <img
-                src="assets/survey-form-prev.JPG"
-                alt=""
-                class="c-img hide"
-              />
+      </div>
+      <div class="links-container" id="links">
+        <section class="link-section" id="tribute">
+          <div class="container">
+            <div class="canvas-div">
+              <div class="img-container">
+                <div class="overlay hide">
+                  <a
+                    class="portfolio-link"
+                    href="https://ccases.github.io/batch12-fe-activities/tribute-page/index.html"
+                    id="tribute-page"
+                    target="_blank"
+                    >Tribute page</a
+                  >
+                  <button class="details">See details</button>
+                </div>
+                <img src="assets/tribute-page-prev.JPG" alt="" class="c-img" />
+              </div>
+              <!-- <canvas class="img-canvas"></canvas> -->
             </div>
-            <!-- <canvas class="img-canvas"></canvas> -->
           </div>
-          <a
-            class="portfolio-link"
-            href="https://ccases.github.io/batch12-fe-activities/survey-form/index.html"
-            id="survey-form"
-            target="_blank"
-            >Survey form</a
-          >
-        </div>
-      </section>
-      <section class="link-section" id="chess">
-        <div class="container">
-          <div class="canvas-div">
-            <div class="img-container">
-              <img src="assets/chess-prev.JPG" alt="" class="c-img hide" />
+        </section>
+        <section class="link-section" id="survey">
+          <div class="container">
+            <div class="canvas-div">
+              <div class="img-container">
+                <div class="overlay hide">
+                  <a
+                    class="portfolio-link"
+                    href="https://ccases.github.io/batch12-fe-activities/survey-form/index.html"
+                    id="survey-form"
+                    target="_blank"
+                    >Survey form</a
+                  >
+                  <button class="details">See details</button>
+                </div>
+                <img src="assets/survey-form-prev.JPG" alt="" class="c-img" />
+              </div>
+              <!-- <canvas class="img-canvas"></canvas> -->
             </div>
-            <!-- <canvas class="img-canvas"></canvas> -->
           </div>
-          <a
-            class="portfolio-link"
-            href="https://ccases.github.io/batch12-fe-activities/chess-board/gridboard.html"
-            id="grid-board"
-            target="_blank"
-            >Chess</a
-          >
-        </div>
-      </section>
-      <section class="link-section" id="landing">
-        <div class="container">
-          <div class="canvas-div">
-            <div class="img-container">
-              <img
-                src="assets/landing-page-prev.JPG"
-                alt=""
-                class="c-img hide"
-              />
+        </section>
+        <section class="link-section" id="chess">
+          <div class="container">
+            <div class="canvas-div">
+              <div class="img-container">
+                <div class="overlay hide">
+                  <a
+                    class="portfolio-link"
+                    href="https://ccases.github.io/batch12-fe-activities/chess-board/gridboard.html"
+                    id="grid-board"
+                    target="_blank"
+                    >Chess</a
+                  >
+                  <button class="details">See details</button>
+                </div>
+                <img src="assets/chess-prev.JPG" alt="" class="c-img" />
+              </div>
+              <!-- <canvas class="img-canvas"></canvas> -->
             </div>
-            <!-- <canvas class="img-canvas"></canvas> -->
           </div>
-          <a
-            class="portfolio-link"
-            href="https://ccases.github.io/batch12-fe-activities/landing-page/index.html"
-            id="landing-page"
-            target="_blank"
-            >Landing Page</a
-          >
-        </div>
-      </section>
-      <section class="link-section" id="momentum">
-        <div class="container">
-          <div class="canvas-div">
-            <div class="img-container">
-              <img src="assets/momentum-prev.JPG" alt="" class="c-img hide" />
+        </section>
+        <section class="link-section" id="landing">
+          <div class="container">
+            <div class="canvas-div">
+              <div class="img-container">
+                <div class="overlay hide">
+                  <a
+                    class="portfolio-link"
+                    href="https://ccases.github.io/batch12-fe-activities/landing-page/index.html"
+                    id="landing-page"
+                    target="_blank"
+                    >Landing Page</a
+                  >
+                  <button class="details">See details</button>
+                </div>
+                <img src="assets/landing-page-prev.JPG" alt="" class="c-img" />
+              </div>
+              <!-- <canvas class="img-canvas"></canvas> -->
             </div>
-            <!-- <canvas class="img-canvas"></canvas> -->
           </div>
-          <a
-            class="portfolio-link"
-            href="https://ccases.github.io/batch12-fe-activities/momentum-app/index.html"
-            id="momentum-app"
-            target="_blank"
-            >Momentum App</a
-          >
-        </div>
-      </section>
-      <section class="link-section" id="tictactoe">
-        <div class="container">
-          <div class="canvas-div">
-            <div class="img-container">
-              <img src="assets/tictactoe-prev.JPG" alt="" class="c-img hide" />
+        </section>
+        <section class="link-section" id="momentum">
+          <div class="container">
+            <div class="canvas-div">
+              <div class="img-container">
+                <div class="overlay hide">
+                  <a
+                    class="portfolio-link"
+                    href="https://ccases.github.io/batch12-fe-activities/momentum-app/index.html"
+                    id="momentum-app"
+                    target="_blank"
+                    >Momentum App</a
+                  >
+                  <button class="details">See details</button>
+                </div>
+                <img src="assets/momentum-prev.JPG" alt="" class="c-img" />
+              </div>
+              <!-- <canvas class="img-canvas"></canvas> -->
             </div>
-            <!-- <canvas class="img-canvas"></canvas> -->
           </div>
-          <a
-            class="portfolio-link"
-            href="https://ccases.github.io/batch12-fe-activities/tictactoe/index.html"
-            id="tictactoe"
-            target="_blank"
-            >Tic Tac Toe</a
-          >
-        </div>
-      </section>
+        </section>
+        <section class="link-section" id="tictactoe">
+          <div class="container">
+            <div class="canvas-div">
+              <div class="img-container">
+                <div class="overlay hide">
+                  <a
+                    class="portfolio-link"
+                    href="https://ccases.github.io/batch12-fe-activities/tictactoe/index.html"
+                    id="tictactoe"
+                    target="_blank"
+                    >Tic Tac Toe</a
+                  >
+                  <button class="details">See details</button>
+                </div>
+                <img src="assets/tictactoe-prev.JPG" alt="" class="c-img" />
+              </div>
+              <!-- <canvas class="img-canvas"></canvas> -->
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="footer">© Carlos Matthew Cases 2021.</div>
     </div>
     <script type="module" src="assets/js/script.js" async defer></script>
   </body>
