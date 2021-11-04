@@ -169,52 +169,101 @@ $img-hover-color: #853d8588;
     height: clamp(600px, 80vh, 1000px);
 
     .modal-img-div {
-      width: 50%;
-      background-color: red;
+      width: 67%;
+      background-color: none;
+      position: relative;
+      overflow: hidden;
+      .modal-img {
+        position: absolute;
+        top: -9999px;
+        bottom: -9999px;
+        left: -9999px;
+        right: -9999px;
+        margin: auto;
+        height: 100%;
+      }
     }
     .modal-text {
       display: flex;
       flex-flow: column;
-      width: 50%;
-      background-color: $gray-3;
+      width: 33%;
+      background-color: #121212;
       overflow: auto;
-      .page-title {
-        font-size: 2em;
-        font-weight: $heavy-font;
-        padding: 10px;
-        align-self: center;
+      color: $gray-1;
+      .page-title-div {
+        background-color: #853d8522;
+        display: flex;
+        justify-content: center;
+        .page-title {
+          font-size: 2em;
+          font-weight: $heavy-font;
+          padding: 10px;
+        }
       }
+
       .modal-text-container {
-        border-top: 1px solid rgba(0, 0, 0, 0.5);
-        border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+        border-top: 1px solid $img-hover-color;
+        border-bottom: 1px solid $img-hover-color;
         height: 100%;
-        padding: 10px;
+        padding: 40px 20px;
         overflow-y: auto;
+        color: $gray-1;
       }
       .page-description {
         white-space: pre-line;
+        overflow: auto;
       }
       .page-tools {
-        color: rgba(0, 0, 0, 0.4);
-        border-bottom: 1px solid rgba(0, 0, 0, 0.5);
-        padding: 10px;
-      }
-      .close-modal {
-        color: $gray-1;
-        background-color: $img-hover-color;
-        width: 200px;
+        color: $gray-3;
+        border-bottom: 1px solid $img-hover-color;
+        background-color: #853d8522;
+        padding: 10px 20px;
         text-align: center;
-        padding: 10px;
-        margin: auto;
-        margin-bottom: 20px;
-        margin-top: 20px;
-        cursor: pointer;
-        transition: 0.3s;
-        border-radius: 20px;
       }
-      .close-modal:hover {
-        color: gray;
-        background-color: $gray-2;
+      .modal-bottom-container {
+        .page-link {
+          margin: auto;
+          background-color: $img-hover-color;
+          margin-top: 20px;
+          width: 200px;
+          display: grid;
+          place-items: center;
+          color: none;
+
+          transition: 0.3s;
+          border-radius: 20px;
+          a {
+            text-align: center;
+            padding: 10px 0;
+            width: 100%;
+            color: $gray-1;
+            text-decoration: none;
+            transition: 0.3s;
+          }
+        }
+        .page-link:hover {
+          background-color: $gray-2;
+          a {
+            color: gray;
+          }
+        }
+        .close-modal {
+          color: $gray-1;
+          background-color: $img-hover-color;
+          width: 200px;
+          text-align: center;
+          padding: 10px;
+          margin: auto;
+          margin-bottom: 20px;
+          margin-top: 20px;
+          cursor: pointer;
+          transition: 0.3s;
+          border-radius: 20px;
+        }
+        .close-modal:hover {
+          color: gray;
+          background-color: $gray-2;
+        }
       }
     }
   }
@@ -227,11 +276,16 @@ $img-hover-color: #853d8588;
       flex-flow: column;
       margin: auto;
       .modal-img-div {
-        height: 50%;
+        height: 67%;
+        width: 100%;
         background-color: blanchedalmond;
+        .modal-img {
+          width: 100%;
+        }
       }
       .modal-text {
-        height: 50%;
+        height: 33%;
+        width: 100%;
         background-color: sandybrown;
       }
     }

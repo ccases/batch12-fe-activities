@@ -20,6 +20,7 @@ const modal = document.getElementsByClassName("modal")[0];
 const modalClose = document.getElementsByClassName("close-modal")[0];
 const modalImg = document.getElementsByClassName("modal-img")[0];
 const modalTitle = document.getElementsByClassName("page-title")[0];
+const modalLink = document.getElementById("page-a");
 const modalContent = document.getElementsByClassName("page-description")[0];
 const modalTools = document.getElementsByClassName("page-tools")[0];
 
@@ -66,6 +67,7 @@ function initImgContainers() {
       modalTitle.textContent = ModalContent[key].title;
       modalContent.textContent = ModalContent[key].content;
       modalTools.textContent = ModalContent[key].tools;
+      modalLink.setAttribute("href", ModalContent[key].webLink);
       modalImg.setAttribute("src", ModalContent[key].imgSrc);
     });
   });
