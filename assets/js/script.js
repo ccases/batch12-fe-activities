@@ -24,6 +24,26 @@ const modalLink = document.getElementById("page-a");
 const modalContent = document.getElementsByClassName("page-description")[0];
 const modalTools = document.getElementsByClassName("page-tools")[0];
 
+// AUDIO
+const audioOpenModal = document.getElementById("audio-doorcls");
+const audioCloseModal = document.getElementById("audio-dooropn");
+const enableSfx = document.getElementById("sfx-enable");
+const enableMusic = document.getElementById("music-enable");
+
+const getSfxEnable = () => {
+  if (enableSfx.checked) {
+    return 0.5;
+  }
+  return 0;
+};
+
+const playSoundFx = (audioNode) => {
+  const origAudio = audioNode;
+  const clone = origAudio.cloneNode();
+  clone.volume = getSfxEnable();
+  clone.play();
+};
+
 function preloadImage(url) {
   var img = new Image();
   img.src = url;
@@ -48,7 +68,6 @@ function initImgContainers() {
     container.addEventListener("click", (e) => {
       let contId = e.target.firstElementChild.firstChild.data;
       let key = "";
-      console.log(contId);
       modal.style.display = "grid";
       if (contId === "Tribute page") {
         key = "tributePage";
@@ -69,18 +88,34 @@ function initImgContainers() {
       modalTools.textContent = ModalContent[key].tools;
       modalLink.setAttribute("href", ModalContent[key].webLink);
       modalImg.setAttribute("src", ModalContent[key].imgSrc);
+
+      playSoundFx(audioOpenModal);
+      if (modal.classList.contains("hide-modal")) {
+        modal.classList.remove("hide-modal");
+        modal.classList.add("show-modal");
+      }
     });
   });
 }
+
+const closeModal = () => {
+  if (modal.classList.contains("show-modal")) {
+    modal.classList.remove("show-modal");
+    modal.classList.add("hide-modal");
+    setTimeout(() => {
+      modal.style.display = "none";
+    }, 500);
+  }
+};
 window.addEventListener("click", (e) => {
-  // add animation to close modal here
   if (e.target == modal) {
-    modal.style.display = "none";
+    playSoundFx(audioCloseModal);
+    closeModal();
   }
 });
 modalClose.addEventListener("click", (e) => {
-  // add animation to close modal here
-  modal.style.display = "none";
+  playSoundFx(audioCloseModal);
+  closeModal();
 });
 
 canvas.width = window.innerWidth;
